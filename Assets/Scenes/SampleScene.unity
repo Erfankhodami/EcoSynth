@@ -760,9 +760,4 @@ PrefabInstance:
       propertyPath: horizontalSlipperiness
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 5263783525240781479, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
+
