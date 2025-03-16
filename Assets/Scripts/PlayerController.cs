@@ -7,9 +7,9 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
     private float movingControll;
-    [SerializeField] private float movingSpeed;
-    [SerializeField] private float horizontalSlipperiness=10;
-    [SerializeField] private float jumpingPower;
+    [SerializeField] private float movingSpeed=20000;
+    [SerializeField] private float horizontalDrag = 30;
+    [SerializeField] private float jumpingPower=35;
     private int jumpCount = 2;
     void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
         //drag system
         playerRB.AddForce(Vector2.right*movingControll*movingSpeed*Time.deltaTime,ForceMode2D.Force);
         Vector3 hVelocity = playerRB.velocity;
-        hVelocity.x *= Time.deltaTime*horizontalSlipperiness;
+        hVelocity.x *= 1-horizontalDrag*Time.deltaTime;
         playerRB.velocity = hVelocity;
         
         if (Input.GetKeyDown(KeyCode.Space)&& jumpCount!=0)
