@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D playerRB;
     private float movingControll;
     [SerializeField] private float movingSpeed;
-    [SerializeField] private float horizontalSlipperiness=100;
+    [SerializeField] private float horizontalSlipperiness=10;
     [SerializeField] private float jumpingPower;
     private int jumpCount = 2;
     void Start()
