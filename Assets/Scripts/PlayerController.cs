@@ -10,6 +10,17 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float movingSpeed=7000;
     [SerializeField] private float horizontalDrag = 8;
     [SerializeField] private float jumpingPower=35;
+    [SerializeField] private bool canDash = true;
+    [SerializeField] private bool isDashing = false;
+    public float dashCoolDown = 2f;
+    public float timeToDash = 1.5f;
+    public float dashForce = 10000f;
+    public GameObject jumpLand;
+    public Transform feet;
+    public float effectOffset = 0.5f;
+    
+    
+    
     private int jumpCount = 2;
     void Start()
     {
@@ -33,6 +44,13 @@ public class PlayerController : MonoBehaviour
             vVelocity.y = jumpingPower;
             playerRB.velocity = vVelocity;
             jumpCount--;
+
+        }
+        
+        //dash system
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        {
+            StartCoroutine(Dash());
         }
     }
 
@@ -42,5 +60,38 @@ public class PlayerController : MonoBehaviour
         {
             jumpCount = 2;
         }
+        Vector3 spawnPosition = new Vector3(feet.position.x, feet.position.y + effectOffset , feet.position.z);
+        Instantiate(jumpLand, spawnPosition, Quaternion.identity);
+        if (collision.collider.CompareTag("Enemy") && isDashing)
+        {
+            collision.gameObject.GetComponent<enemyAILogic>().takeDamage(10);
+        }
     }
+
+    IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+
+        float originalGravity = playerRB.gravityScale;
+        playerRB.gravityScale = 0; // Disable gravity for a smooth dash
+
+        Vector2 dashDirection = movingControll != 0 ? new Vector2(movingControll, 0).normalized : new Vector2(transform.localScale.x, 0);
+        float dashStartTime = Time.time;
+
+        while (Time.time < dashStartTime + timeToDash)
+        {
+            playerRB.velocity = dashDirection * dashForce;
+            yield return null; // Wait for next frame
+        }
+
+        // **STOP DASHING PROPERLY**
+        isDashing = false;
+        playerRB.gravityScale = originalGravity; // Restore gravity
+        playerRB.velocity = Vector2.zero; // **Stop movement after dash**
+
+        yield return new WaitForSeconds(dashCoolDown); // Wait before allowing another dash
+        canDash = true;
+    }
+
 }
