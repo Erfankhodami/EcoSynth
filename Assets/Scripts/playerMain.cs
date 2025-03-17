@@ -28,22 +28,20 @@ public class playerMain : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    //moved ink collision check to playercontroller script
+    public void UpdateInkAmount()
     {
-        if (other.collider.CompareTag("ecoInk"))
-        {
-            numberofEcoInk += 1;
-            ecoIndicator.text = "x" + numberofEcoInk;
-            StartCoroutine(destroy(other.gameObject));
-            Debug.Log("Gained Ink to print!");
-        }
+        numberofEcoInk += 1;
+        ecoIndicator.text = "x" + numberofEcoInk;
+        Debug.Log("Gained Ink to print!");
     }
 
-    IEnumerator destroy(GameObject obj)
+    //is this needed to be an ienumerator method?
+    /*IEnumerator destroy(GameObject obj)
     {
         yield return new WaitForSeconds(0.1f);
         Destroy(obj);
-    }
+    }*/
 
     public void showPrintCanvas()
     {

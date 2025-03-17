@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatspeed: 1
   flatAmount: 1
+  _boxCollider2D: {fileID: 3257241061376418696}
 --- !u!61 &3257241061376418696
 BoxCollider2D:
   m_ObjectHideFlags: 0

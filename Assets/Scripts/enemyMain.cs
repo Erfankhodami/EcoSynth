@@ -9,29 +9,22 @@ public class enemyMain : MonoBehaviour
 {
     public GameObject inkDrop;
     public enemyAILogic logic;
-    public float timeBeforeSpawn = 0.5f;
 
     private void Start()
     {
         logic = gameObject.GetComponent<enemyAILogic>();
     }
-
     
-
-    public IEnumerator onDie()
+    public void onDie()
     {
-        yield return StartCoroutine(spawn());
         Destroy(gameObject);
+        SpawnInk();
         Debug.Log("Ded");
     }
 
-    IEnumerator spawn()
+    void SpawnInk()
     {
         Instantiate(inkDrop, transform.position, Quaternion.identity);
-        Collider2D inkCollider = inkDrop.GetComponent<BoxCollider2D>();
-        inkCollider.isTrigger = true;
-        yield return new WaitForSeconds(0.1f);
-        inkCollider.isTrigger = false;
     }
 
     

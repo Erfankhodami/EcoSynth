@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 424059034614095128, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.299988
+      objectReference: {fileID: 0}
     - target: {fileID: 5263783525240781467, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -176,15 +180,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5263783525240781478, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
       propertyPath: dashForce
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 5263783525240781478, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
       propertyPath: timeToDash
-      value: 0.5
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5263783525240781479, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6402576846878622993, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
@@ -321,7 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1475543161}
   smoothSpeed: 5
-  offset: {x: 0, y: 0, z: -0.3}
+  offset: {x: 0, y: 0, z: -1}
 --- !u!1 &531775154
 GameObject:
   m_ObjectHideFlags: 0

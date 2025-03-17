@@ -22,17 +22,12 @@ public class PlayerController : MonoBehaviour
     public float effectOffset = 0.5f;
     public AudioClip jumpSound;
     public AudioSource audioSource;
-    
-        
-    
-    
-    
     private int jumpCount = 2;
+    private playerMain _playerMain;
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
-        //
-
+        _playerMain = GetComponent<playerMain>();
     }
     
     void Update()
@@ -57,17 +52,15 @@ public class PlayerController : MonoBehaviour
         }
         
         //dash system
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash&& movingControll!=0)
         {
             StartCoroutine(Dash());
         }
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Platform")
+        if (collision.gameObject.CompareTag("Platform"))
         {
             jumpCount = 2;
         }
@@ -77,8 +70,19 @@ public class PlayerController : MonoBehaviour
         if (collision.collider.CompareTag("Enemy") && isDashing)
         {
             collision.gameObject.GetComponent<enemyAILogic>().takeDamage(10);
-            StartCoroutine(collision.gameObject.GetComponent<enemyMain>().onDie());
+            collision.gameObject.GetComponent<enemyMain>().onDie();
         }
+        if (collision.gameObject.CompareTag("ecoInk"))
+        {
+            _playerMain.UpdateInkAmount();
+            Destroy(collision.gameObject);
+        }
+        
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        
     }
 
     IEnumerator Dash()
