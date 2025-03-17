@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public float effectOffset = 0.5f;
     public AudioClip jumpSound;
     public AudioSource audioSource;
+    
         
     
     
@@ -60,6 +61,8 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(Dash());
         }
+        
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -70,9 +73,11 @@ public class PlayerController : MonoBehaviour
         }
         Vector3 spawnPosition = new Vector3(feet.position.x, feet.position.y + effectOffset , feet.position.z);
         Instantiate(jumpLand, spawnPosition, Quaternion.identity);
+        
         if (collision.collider.CompareTag("Enemy") && isDashing)
         {
             collision.gameObject.GetComponent<enemyAILogic>().takeDamage(10);
+            StartCoroutine(collision.gameObject.GetComponent<enemyMain>().onDie());
         }
     }
 
