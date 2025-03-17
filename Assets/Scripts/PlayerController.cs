@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.Playables;
 
 public class PlayerController : MonoBehaviour
 {
@@ -18,6 +20,9 @@ public class PlayerController : MonoBehaviour
     public GameObject jumpLand;
     public Transform feet;
     public float effectOffset = 0.5f;
+    public AudioClip jumpSound;
+    public AudioSource audioSource;
+        
     
     
     
@@ -25,6 +30,8 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
+        //
+
     }
     
     void Update()
@@ -44,6 +51,7 @@ public class PlayerController : MonoBehaviour
             vVelocity.y = jumpingPower;
             playerRB.velocity = vVelocity;
             jumpCount--;
+            audioSource.PlayOneShot(jumpSound);
 
         }
         

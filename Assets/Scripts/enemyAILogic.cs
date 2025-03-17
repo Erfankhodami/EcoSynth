@@ -11,6 +11,7 @@ public class enemyAILogic : MonoBehaviour
     public float rayLength = 2f;
     public float health = 10f;
     public GameObject dieEffect;
+    public bool isDead = false;
     
     private void Update()
     {
@@ -42,8 +43,8 @@ public class enemyAILogic : MonoBehaviour
 
     public void Die()
     {
+        isDead = true;
         Instantiate(dieEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject);
-        Debug.Log("Ded");
+        
     }
 }
