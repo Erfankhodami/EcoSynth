@@ -8,12 +8,12 @@ using UnityEngine.Playables;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
-    private float movingControll;
     [SerializeField] private float movingSpeed=7000;
     [SerializeField] private float horizontalDrag = 8;
     [SerializeField] private float jumpingPower=35;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing = false;
+    public float movingControll;
     public float dashCoolDown = 2f;
     public float timeToDash = 1.5f;
     public float dashForce = 10000f;
@@ -77,11 +77,6 @@ public class PlayerController : MonoBehaviour
             _playerMain.UpdateInkAmount();
             Destroy(collision.gameObject);
         }
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D col)
-    {
         
     }
 

@@ -1,0 +1,2 @@
+﻿i implemented a new way to spawn bridges so you just need to call the spawnbridge method in bridgeSpawn script to spawn one of them
+i also changed level design system to tilemap
