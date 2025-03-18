@@ -1,2 +1,10 @@
 ﻿i implemented a new way to spawn bridges so you just need to call the spawnbridge method in bridgeSpawn script to spawn one of them
 i also changed level design system to tilemap
+
+#Uchiha Section :)
+1)fixed printer system to use mouse to place(sadly took longer than I anticipated)
+2)added EcoInk collect particle system
+3)added Dash, enemy death SFX
+4)Gave a countdown system to platfrom forcing player to act quick
+5)gave the player ability to zoom in and out while placing the platforms
+6)gave the player ability to pan around using wasd or mouse while placing the platform(limited movement and zoom btw)

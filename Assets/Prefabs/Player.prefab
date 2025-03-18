@@ -718,7 +718,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6364789425109328776}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BridgeSpawn, Assembly-CSharp
+        m_MethodName: PrepareSmallBridge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5030366733176641488
 GameObject:
   m_ObjectHideFlags: 0
@@ -953,6 +965,7 @@ MonoBehaviour:
   jumpingPower: 35
   canDash: 1
   isDashing: 0
+  movingControll: 0
   dashCoolDown: 2
   timeToDash: 0.2
   dashForce: 35
@@ -960,7 +973,9 @@ MonoBehaviour:
   feet: {fileID: 3114378079768284311}
   effectOffset: 0.5
   jumpSound: {fileID: 8300000, guid: 68fb4d97ead04f74295c4da58307cb8c, type: 3}
+  dashSound: {fileID: 8300000, guid: 0db8869f8bf048a4e8e0636d7529d455, type: 3}
   audioSource: {fileID: 318632260774101254}
+  ecoInkEffect: {fileID: 2527212227027253999, guid: 5d05b9fdb0d716942a7b8d5efef78fb8, type: 3}
 --- !u!114 &7662397934603744676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1196,7 +1211,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7896362852951631540}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BridgeSpawn, Assembly-CSharp
+        m_MethodName: PrepareLargeBridge
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &5795337953744439666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1452,7 +1479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1291450768238630118
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1794,9 +1821,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1676864405832336432}
-        m_TargetAssemblyTypeName: printManager, Assembly-CSharp
-        m_MethodName: Update
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: BridgeSpawn, Assembly-CSharp
+        m_MethodName: PrepareMediumBridge
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

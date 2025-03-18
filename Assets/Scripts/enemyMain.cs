@@ -16,7 +16,8 @@ public class enemyMain : MonoBehaviour
     }
     
     public void onDie()
-    {
+    {   
+        logic.enemySource.PlayOneShot(logic.dieSFX);
         Destroy(gameObject);
         SpawnInk();
         Debug.Log("Ded");

@@ -102,6 +102,10 @@ MonoBehaviour:
   _bridgeSpawn: {fileID: 0}
   isInPrepareMode: 1
   isSelectedBridge: 0
+  mainCamera: {fileID: 0}
+  health: 100
+  decayRate: 10
+  destroyDelay: 1
 --- !u!61 &4171956365172729157
 BoxCollider2D:
   m_ObjectHideFlags: 0

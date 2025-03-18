@@ -21,9 +21,11 @@ public class PlayerController : MonoBehaviour
     public Transform feet;
     public float effectOffset = 0.5f;
     public AudioClip jumpSound;
+    public AudioClip dashSound;
     public AudioSource audioSource;
     private int jumpCount = 2;
     private playerMain _playerMain;
+    public GameObject ecoInkEffect;
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
@@ -55,6 +57,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash&& movingControll!=0)
         {
             StartCoroutine(Dash());
+            audioSource.PlayOneShot(dashSound);
         }
     }
 
@@ -75,6 +78,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("ecoInk"))
         {
             _playerMain.UpdateInkAmount();
+            Instantiate(ecoInkEffect, collision.gameObject.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
         }
         

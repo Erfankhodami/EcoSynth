@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class enemyAILogic : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class enemyAILogic : MonoBehaviour
     public float health = 10f;
     public GameObject dieEffect;
     public bool isDead = false;
+    public AudioClip dieSFX;
+    public AudioSource enemySource;
     
     private void Update()
     {
@@ -44,7 +47,9 @@ public class enemyAILogic : MonoBehaviour
     public void Die()
     {
         isDead = true;
+        /*enemySource.PlayOneShot(dieSFX);*/
         Instantiate(dieEffect, transform.position, Quaternion.identity);
+        
         
     }
 }

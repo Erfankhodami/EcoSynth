@@ -30,7 +30,7 @@ public class printManager : MonoBehaviour
         isPlacing = true;
     }
 
-    IEnumerator PlacePlatform()
+    public IEnumerator PlacePlatform()
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos = MainCamera.ScreenToWorldPoint(mousePos);
@@ -40,3 +40,5 @@ public class printManager : MonoBehaviour
         isPlacing = false;
     }
 }
+
+////BridgeController br=Instantiate(selectedBridge).GetComponent<BridgeController>();
