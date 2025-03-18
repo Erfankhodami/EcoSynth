@@ -754,7 +754,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 15.75, y: -14.3}
+  m_AnchoredPosition: {x: 15.75, y: -14.299988}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5159367680804298661
@@ -954,8 +954,8 @@ MonoBehaviour:
   canDash: 1
   isDashing: 0
   dashCoolDown: 2
-  timeToDash: 0.5
-  dashForce: 25
+  timeToDash: 0.2
+  dashForce: 35
   jumpLand: {fileID: 935718956180105859, guid: 0077115c4463d96499630796c9c28e6c, type: 3}
   feet: {fileID: 3114378079768284311}
   effectOffset: 0.5
