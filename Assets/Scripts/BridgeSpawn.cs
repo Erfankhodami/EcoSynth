@@ -105,6 +105,7 @@ public class BridgeSpawn : MonoBehaviour
 
         if (previewBridge != null)
         {
+            previewBridge.GetComponent<BoxCollider2D>().isTrigger = true;
             previewBridge.transform.position = mouseWorldPos;
             previewBridge.transform.localScale = originalPreviewScale; // Keep its size the same
         }

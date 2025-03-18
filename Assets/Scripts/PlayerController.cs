@@ -8,6 +8,7 @@ using UnityEngine.Playables;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
+    private PlayerAnimatorContoller _playerAnimatorContoller;
     [SerializeField] private float movingSpeed=7000;
     [SerializeField] private float horizontalDrag = 8;
     [SerializeField] private float jumpingPower=35;
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     public GameObject ecoInkEffect;
     void Start()
     {
+        _playerAnimatorContoller = GetComponent<PlayerAnimatorContoller>();
         playerRB = GetComponent<Rigidbody2D>();
         _playerMain = GetComponent<playerMain>();
     }
@@ -48,9 +50,16 @@ public class PlayerController : MonoBehaviour
             Vector3 vVelocity = playerRB.velocity;
             vVelocity.y = jumpingPower;
             playerRB.velocity = vVelocity;
-            jumpCount--;
             audioSource.PlayOneShot(jumpSound);
-
+            if (jumpCount == 2)
+            {
+                    _playerAnimatorContoller.PlayNormalJumpAnimation();
+            }
+            if (jumpCount == 1)
+            {
+                _playerAnimatorContoller.PlayDoubleJumpAnimation();
+            }
+            jumpCount--;
         }
         
         //dash system
@@ -66,6 +75,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Platform"))
         {
             jumpCount = 2;
+            _playerAnimatorContoller.PlayLandAnimation();
         }
         Vector3 spawnPosition = new Vector3(feet.position.x, feet.position.y + effectOffset , feet.position.z);
         Instantiate(jumpLand, spawnPosition, Quaternion.identity);
@@ -88,7 +98,8 @@ public class PlayerController : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
-
+        _playerAnimatorContoller.PlayDashAnimation();
+        
         float originalGravity = playerRB.gravityScale;
         playerRB.gravityScale = 0; // Disable gravity for a smooth dash
 
@@ -103,6 +114,7 @@ public class PlayerController : MonoBehaviour
 
         // **STOP DASHING PROPERLY**
         isDashing = false;
+        _playerAnimatorContoller.StopDashAnimation();
         playerRB.gravityScale = originalGravity; // Restore gravity
         playerRB.velocity = Vector2.zero; // **Stop movement after dash**
 
