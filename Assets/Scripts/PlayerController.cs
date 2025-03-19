@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Playables;
@@ -14,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float jumpingPower=35;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing = false;
+    [SerializeField] private float damageForce=10;
+    [SerializeField] private float damageEffectTime = .5f;
+    public int health = 100;
     public float movingControll;
     public float dashCoolDown = 2f;
     public float timeToDash = 1.5f;
@@ -27,8 +31,10 @@ public class PlayerController : MonoBehaviour
     private int jumpCount = 2;
     private playerMain _playerMain;
     public GameObject ecoInkEffect;
+    private SpriteRenderer _spriteRenderer;
     void Start()
     {
+        _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerAnimatorContoller = GetComponent<PlayerAnimatorContoller>();
         playerRB = GetComponent<Rigidbody2D>();
         _playerMain = GetComponent<playerMain>();
@@ -91,6 +97,12 @@ public class PlayerController : MonoBehaviour
             Instantiate(ecoInkEffect, collision.gameObject.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.tag == "Enemy"&&!isDashing)
+        {
+            Vector3 dir = transform.position-collision.transform.position  ;
+            StartCoroutine(Damage(dir));
+        }
         
     }
 
@@ -120,6 +132,21 @@ public class PlayerController : MonoBehaviour
 
         yield return new WaitForSeconds(dashCoolDown); // Wait before allowing another dash
         canDash = true;
+    }
+
+    //this method handles the damage effect
+    IEnumerator Damage(Vector3 dir)
+    {
+        health -= 10;
+        int fliper = 1;
+        if (dir.x < 0)
+        {
+            fliper = -1;
+        }
+        playerRB.AddForce(new Vector3(fliper,.5f,0)*damageForce,ForceMode2D.Impulse);
+        _spriteRenderer.color=Color.red;
+        yield return new WaitForSeconds(damageEffectTime);
+        _spriteRenderer.color = Color.white;
     }
 
 }

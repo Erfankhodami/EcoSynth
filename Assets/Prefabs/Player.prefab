@@ -162,13 +162,16 @@ MonoBehaviour:
   jumpingPower: 35
   canDash: 1
   isDashing: 0
+  damageForce: 50
+  damageEffectTime: 0.3
+  health: 100
   movingControll: 0
   dashCoolDown: 2
   timeToDash: 0.2
   dashForce: 35
   jumpLand: {fileID: 935718956180105859, guid: 0077115c4463d96499630796c9c28e6c, type: 3}
   feet: {fileID: 3114378079768284311}
-  effectOffset: 0.5
+  effectOffset: 1
   jumpSound: {fileID: 8300000, guid: 68fb4d97ead04f74295c4da58307cb8c, type: 3}
   dashSound: {fileID: 8300000, guid: 0db8869f8bf048a4e8e0636d7529d455, type: 3}
   audioSource: {fileID: 318632260774101254}
