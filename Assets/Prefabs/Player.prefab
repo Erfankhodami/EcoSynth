@@ -176,6 +176,9 @@ MonoBehaviour:
   dashSound: {fileID: 8300000, guid: 0db8869f8bf048a4e8e0636d7529d455, type: 3}
   audioSource: {fileID: 318632260774101254}
   ecoInkEffect: {fileID: 2527212227027253999, guid: 5d05b9fdb0d716942a7b8d5efef78fb8, type: 3}
+  playerTakeDamage: {fileID: 8300000, guid: 8f130b867e55495418fd84148459cfee, type: 3}
+  playerDie: {fileID: 8300000, guid: aef5d43b2777fd94cb268a598b36e82b, type: 3}
+  playerDeathEffect: {fileID: 1562906094599282119, guid: 7992957dde402b64ba1a6e3696fc824f, type: 3}
 --- !u!114 &7662397934603744676
 MonoBehaviour:
   m_ObjectHideFlags: 0

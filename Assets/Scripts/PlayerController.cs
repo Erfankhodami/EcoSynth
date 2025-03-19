@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float damageForce=10;
     [SerializeField] private float damageEffectTime = .5f;
     public int health = 100;
+    
     public float movingControll;
     public float dashCoolDown = 2f;
     public float timeToDash = 1.5f;
@@ -32,6 +33,12 @@ public class PlayerController : MonoBehaviour
     private playerMain _playerMain;
     public GameObject ecoInkEffect;
     private SpriteRenderer _spriteRenderer;
+    public AudioClip playerTakeDamage;
+    public AudioClip playerDie;
+    public GameObject playerDeathEffect;
+    
+    
+    
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -103,6 +110,11 @@ public class PlayerController : MonoBehaviour
             Vector3 dir = transform.position-collision.transform.position  ;
             StartCoroutine(Damage(dir));
         }
+
+        if (collision.gameObject.tag == "spikes")
+        {
+            Die();
+        }
         
     }
 
@@ -146,7 +158,17 @@ public class PlayerController : MonoBehaviour
         playerRB.AddForce(new Vector3(fliper,.5f,0)*damageForce,ForceMode2D.Impulse);
         _spriteRenderer.color=Color.red;
         yield return new WaitForSeconds(damageEffectTime);
+        audioSource.PlayOneShot(playerTakeDamage);
         _spriteRenderer.color = Color.white;
     }
+
+    public void Die()
+    {
+        audioSource.PlayOneShot(playerDie);
+        Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
+        Debug.Log("dead!!!");
+        Destroy(gameObject,2f);
+    }
+    
 
 }

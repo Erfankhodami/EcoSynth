@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum bridgeType
 {
@@ -20,6 +21,12 @@ public class BridgeSpawn : MonoBehaviour
     private cameraFollow camFollow;
     private bool isPlacing = false;
     private Vector3 mouseWorldPos;
+    public playerMain _playermain;
+    public Text errorText;
+    public int minForSmall;
+    public int minForMedium;
+    public int minForLarge;
+    public PlayerController _prc;
     
     public float normalZoom = 5f;
     public float printZoom = 8f; // Default zoom-out value
@@ -40,24 +47,58 @@ public class BridgeSpawn : MonoBehaviour
     {
         mainCamera = Camera.main;
         camFollow = mainCamera.GetComponent<cameraFollow>();
+        
     }
 
     public void PrepareSmallBridge()
     {
-        SetSelectedBridge(bridgeType.small);
-        StartPlacementMode();
+        if (_playermain.numberofEcoInk >= minForSmall)
+        {
+            canInstantiate = true;
+            SetSelectedBridge(bridgeType.small);
+            StartPlacementMode();
+        }
+        else
+        {
+            canInstantiate = false;
+            errorText.text = "NOT ENOUGH ECOINK! COLLECT MORE";
+            
+        }
+        
     }
 
     public void PrepareMediumBridge()
     {
-        SetSelectedBridge(bridgeType.medium);
-        StartPlacementMode();
+        if (_playermain.numberofEcoInk >= minForMedium)
+        {
+            canInstantiate = true;
+            SetSelectedBridge(bridgeType.medium);
+            StartPlacementMode();
+        }
+        else
+        {
+            canInstantiate = false;
+            errorText.text = "NOT ENOUGH ECOINK! COLLECT MORE!";
+            
+        }
+        
     }
 
     public void PrepareLargeBridge()
     {
-        SetSelectedBridge(bridgeType.large);
-        StartPlacementMode();
+        if (_playermain.numberofEcoInk >= minForLarge)
+        {
+            canInstantiate = true;
+            SetSelectedBridge(bridgeType.large);
+            StartPlacementMode();
+        }
+        else
+        {   
+            canInstantiate = false;
+            errorText.text = "NOT ENOUGH ECOINK! COLLECT MORE!";
+            
+        }
+        
     }
 
     public void SetSelectedBridge(bridgeType type)
@@ -89,11 +130,23 @@ public class BridgeSpawn : MonoBehaviour
         {
             UpdatePreviewPosition();
             HandleScrollZoom();
-            HandleMousePan();
 
             if (Input.GetMouseButtonDown(1)) // Right Click to place
             {
-                PlaceBridge();
+                int ecoInkCost = 0;
+                if (selectedBridge == bridges[(int) bridgeType.small])
+                {
+                    ecoInkCost = minForSmall;
+                }
+                else if (selectedBridge == bridges[(int)bridgeType.medium])
+                {
+                    ecoInkCost = minForMedium;
+                }
+                else if(selectedBridge == bridges[(int)bridgeType.large])
+                {
+                    ecoInkCost = minForLarge;
+                }
+                PlaceBridge(ecoInkCost);
             }
         }
     }
@@ -122,6 +175,7 @@ public class BridgeSpawn : MonoBehaviour
         }
     }
 
+    /*
     void HandleMousePan()
     {
         if (Input.GetMouseButtonDown(2)) // Middle Click starts dragging
@@ -142,16 +196,20 @@ public class BridgeSpawn : MonoBehaviour
             lastMousePosition = Input.mousePosition;
         }
     }
+    */
 
-    void PlaceBridge()
+    void PlaceBridge(int ecoInkCost)
     {
         GameObject newPlatform = Instantiate(selectedBridge, mouseWorldPos, Quaternion.identity);
         newPlatform.GetComponent<BridgeController>().StartDecay(); // Start health decay after placement
-
+        int newNumberOfEcoInk = _playermain.numberofEcoInk -= ecoInkCost;
         Destroy(previewBridge);
         isPlacing = false;
         StartCoroutine(ZoomCamera(normalZoom, 0.5f));
         camFollow.canFollow = true;
+        _playermain.showPlayerCanvas();
+        _playermain.ecoIndicator.text = "x" + newNumberOfEcoInk;
+
     }
 
     void SetPreviewMode(GameObject obj, bool isPreview)

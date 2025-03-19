@@ -8,6 +8,7 @@ TagManager:
   - feet
   - Enemy
   - ecoInk
+  - spikes
   layers:
   - Default
   - TransparentFX
