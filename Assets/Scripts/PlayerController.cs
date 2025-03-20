@@ -5,22 +5,27 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Playables;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
     private PlayerAnimatorContoller _playerAnimatorContoller;
-    [SerializeField] private float movingSpeed=7000;
+    [SerializeField] private float movingSpeed = 7000;
     [SerializeField] private float horizontalDrag = 8;
-    [SerializeField] private float jumpingPower=35;
+    [SerializeField] private float jumpingPower = 35;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing = false;
-    [SerializeField] private float damageForce=10;
+    [SerializeField] private float damageForce = 10;
     [SerializeField] private float damageEffectTime = .5f;
-    public int health = 100;
+    
+    public int maxHealth = 100;
+    public int health;
+    public Slider healthBar; // ✅ Health Bar
+    public Slider dashCooldownBar; // ✅ Dash Cooldown Bar
     
     public float movingControll;
-    public float dashCoolDown = 2f;
+    public float dashCoolDown = 2f; // Cooldown time in seconds
     public float timeToDash = 1.5f;
     public float dashForce = 10000f;
     public GameObject jumpLand;
@@ -36,47 +41,45 @@ public class PlayerController : MonoBehaviour
     public AudioClip playerTakeDamage;
     public AudioClip playerDie;
     public GameObject playerDeathEffect;
-    
-    
-    
+
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _playerAnimatorContoller = GetComponent<PlayerAnimatorContoller>();
         playerRB = GetComponent<Rigidbody2D>();
         _playerMain = GetComponent<playerMain>();
+
+        // ✅ Initialize Health Bar
+        health = maxHealth;
+        healthBar.maxValue = maxHealth;
+        healthBar.value = health;
+
+        // ✅ Initialize Dash Cooldown Bar
+        dashCooldownBar.maxValue = dashCoolDown;
+        dashCooldownBar.value = dashCoolDown; // Full at start (dash is ready)
     }
-    
+
     void Update()
     {
-        //basic player movement
         movingControll = Input.GetAxis("Horizontal");
-        //drag system
-        playerRB.AddForce(Vector2.right*movingControll*movingSpeed*Time.deltaTime,ForceMode2D.Force);
+
+        playerRB.AddForce(Vector2.right * movingControll * movingSpeed * Time.deltaTime, ForceMode2D.Force);
         Vector3 hVelocity = playerRB.velocity;
-        hVelocity.x *= 1-horizontalDrag*Time.deltaTime;
+        hVelocity.x *= 1 - horizontalDrag * Time.deltaTime;
         playerRB.velocity = hVelocity;
-        
-        if (Input.GetKeyDown(KeyCode.Space)&& jumpCount!=0)
+
+        if (Input.GetKeyDown(KeyCode.Space) && jumpCount != 0)
         {
-            //jumping force system
             Vector3 vVelocity = playerRB.velocity;
             vVelocity.y = jumpingPower;
             playerRB.velocity = vVelocity;
             audioSource.PlayOneShot(jumpSound);
-            if (jumpCount == 2)
-            {
-                    _playerAnimatorContoller.PlayNormalJumpAnimation();
-            }
-            if (jumpCount == 1)
-            {
-                _playerAnimatorContoller.PlayDoubleJumpAnimation();
-            }
+            if (jumpCount == 2) _playerAnimatorContoller.PlayNormalJumpAnimation();
+            if (jumpCount == 1) _playerAnimatorContoller.PlayDoubleJumpAnimation();
             jumpCount--;
         }
-        
-        //dash system
-        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash&& movingControll!=0)
+
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && movingControll != 0)
         {
             StartCoroutine(Dash());
             audioSource.PlayOneShot(dashSound);
@@ -90,10 +93,10 @@ public class PlayerController : MonoBehaviour
             jumpCount = 2;
             _playerAnimatorContoller.PlayLandAnimation();
         }
-        Vector3 spawnPosition = new Vector3(feet.position.x, feet.position.y + effectOffset , feet.position.z);
+        
+        Vector3 spawnPosition = new Vector3(feet.position.x, feet.position.y + effectOffset, feet.position.z);
         Instantiate(jumpLand, spawnPosition, Quaternion.identity);
 
-        
         if (collision.gameObject.CompareTag("ecoInk"))
         {
             _playerMain.UpdateInkAmount();
@@ -101,13 +104,10 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        
-
-        if (collision.gameObject.tag == "spikes")
+        /*if (collision.gameObject.tag == "spikes")
         {
-            Die();
-        }
-        
+            TakeDamage(20);
+        }*/
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -129,9 +129,9 @@ public class PlayerController : MonoBehaviour
         }
 
         string tag = col.gameObject.tag;
-        if ( tag== "Bob"||tag=="Slug"||tag=="Tree"&&!isDashing)
+        if ((tag == "Bob" || tag == "Slug" || tag == "Tree") && !isDashing)
         {
-            Vector3 dir = transform.position-col.transform.position  ;
+            Vector3 dir = transform.position - col.transform.position;
             StartCoroutine(Damage(dir));
         }
     }
@@ -141,9 +141,9 @@ public class PlayerController : MonoBehaviour
         canDash = false;
         isDashing = true;
         _playerAnimatorContoller.PlayDashAnimation();
-        
+
         float originalGravity = playerRB.gravityScale;
-        playerRB.gravityScale = 0; // Disable gravity for a smooth dash
+        playerRB.gravityScale = 0;
 
         Vector2 dashDirection = movingControll != 0 ? new Vector2(movingControll, 0).normalized : new Vector2(transform.localScale.x, 0);
         float dashStartTime = Time.time;
@@ -151,42 +151,68 @@ public class PlayerController : MonoBehaviour
         while (Time.time < dashStartTime + timeToDash)
         {
             playerRB.velocity = dashDirection * dashForce;
-            yield return null; // Wait for next frame
+            yield return null;
         }
 
-        // **STOP DASHING PROPERLY**
         isDashing = false;
         _playerAnimatorContoller.StopDashAnimation();
-        playerRB.gravityScale = originalGravity; // Restore gravity
-        playerRB.velocity = Vector2.zero; // **Stop movement after dash**
+        playerRB.gravityScale = originalGravity;
+        playerRB.velocity = Vector2.zero;
 
-        yield return new WaitForSeconds(dashCoolDown); // Wait before allowing another dash
+        // ✅ Start Dash Cooldown
+        StartCoroutine(DashCooldown());
+
+        yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
     }
 
-    //this method handles the damage effect
+    // ✅ Dash Cooldown Bar Logic
+    IEnumerator DashCooldown()
+    {
+        dashCooldownBar.value = 0; // Empty bar when dash starts
+
+        float elapsedTime = 0;
+        while (elapsedTime < dashCoolDown)
+        {
+            elapsedTime += Time.deltaTime;
+            dashCooldownBar.value = elapsedTime; // Update bar over time
+            yield return null;
+        }
+
+        dashCooldownBar.value = dashCoolDown; // Refill bar when cooldown ends
+    }
+
+    // Health Bar Logic (No Changes)
     IEnumerator Damage(Vector3 dir)
     {
         health -= 10;
+        health = Mathf.Clamp(health, 0, maxHealth);
+        healthBar.value = health;
+
         int fliper = 1;
         if (dir.x < 0)
         {
             fliper = -1;
         }
-        playerRB.AddForce(new Vector3(fliper,.5f,0)*damageForce,ForceMode2D.Impulse);
-        _spriteRenderer.color=Color.red;
+        playerRB.AddForce(new Vector3(fliper, .5f, 0) * damageForce, ForceMode2D.Impulse);
+        _spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(damageEffectTime);
         audioSource.PlayOneShot(playerTakeDamage);
         _spriteRenderer.color = Color.white;
+
+        if (health <= 0)
+        {
+            Die();
+        }
     }
 
     public void Die()
     {
+        health = 0;
+        healthBar.value = health;
         audioSource.PlayOneShot(playerDie);
         Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
         Debug.Log("dead!!!");
-        Destroy(gameObject,2f);
+        Destroy(gameObject, 2f);
     }
-    
-
 }

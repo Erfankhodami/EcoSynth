@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class playerMain : MonoBehaviour
 {
     public int numberofEcoInk = 0;
-    public int health = 100;
     public Text ecoIndicator;
     public GameObject printCanvas;
     public GameObject playerCanvas;
     public bool printCanvasActive = false;
+    public GameObject mainCanvas;
 
     private void Update()
     {
@@ -44,14 +44,16 @@ public class playerMain : MonoBehaviour
     }*/
 
     public void showPrintCanvas()
-    {
+    {   
+        mainCanvas.SetActive(true);
         printCanvasActive = true;
         playerCanvas.SetActive(false);
         printCanvas.SetActive(true);
     }
 
     public void showPlayerCanvas()
-    {
+    {   
+        mainCanvas.SetActive(true);
         printCanvasActive = false;
         playerCanvas.SetActive(true);
         printCanvas.SetActive(false);
