@@ -15,7 +15,6 @@ public class slugEnemyAI : EnemyInteligence
         if (health == 0)
         {
             Die(transform.position);
-            Destroy(gameObject);
         }
     }
 }

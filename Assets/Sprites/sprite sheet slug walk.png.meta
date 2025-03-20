@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b6f1c32601eb7534b9435dfc465cf629
+guid: 28120355de8a25c4abb2adc2dea7aa52
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -101,29 +101,17 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite sheet tree attack_0
+      name: sprite sheet slug walk_0
       rect:
         serializedVersion: 2
-        x: 65
-        y: 61
-        width: 23
-        height: 61
+        x: 61
+        y: 51
+        width: 40
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,20 +119,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7b3ce7e0cc61cfb49b649f9a7c367e03
-      internalID: 1861934141
+      spriteID: 0f1e141ea6e385141894e98ee677471a
+      internalID: 968507161
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite sheet tree attack_1
+      name: sprite sheet slug walk_1
       rect:
         serializedVersion: 2
-        x: 127
-        y: 61
-        width: 22
-        height: 61
+        x: 144
+        y: 51
+        width: 37
+        height: 60
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -152,29 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdee8e00b3f35f749bbb315292dfd59d
-      internalID: 593778592
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite sheet tree attack_2
-      rect:
-        serializedVersion: 2
-        x: 189
-        y: 61
-        width: 18
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 241415f80ef38034ca196beb58af5f0c
-      internalID: -1585718333
+      spriteID: c4a40d8a5cc18624bb98193649160607
+      internalID: 1624182514
       vertices: []
       indices: 
       edges: []
@@ -190,9 +157,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sprite sheet tree attack_0: 1861934141
-      sprite sheet tree attack_2: -1585718333
-      sprite sheet tree attack_1: 593778592
+      sprite sheet slug walk_0: 968507161
+      sprite sheet slug walk_1: 1624182514
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

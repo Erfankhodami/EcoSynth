@@ -1,23 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TreeEnemyAI : EnemyInteligence
 {
     private bool didPlayerNotice = false;
     [SerializeField] private float noticeErea=5;
+    
     void Update()
     {
         if (!didPlayerNotice)
         {
+            
             Collider2D hit = Physics2D.OverlapCircle(transform.position, noticeErea, playerLayerMask);
             if (hit != null)
             {
                 didPlayerNotice = true;
+                _animator.SetBool("isWalking",true);
             }
         }
         else
         {
+            Collider2D atackCheck = Physics2D.OverlapCircle(transform.position, attackRadious, playerLayerMask);
+            if (atackCheck != null)
+            {
+                _animator.SetBool("isAttacking",true);
+            }
+            else
+            {
+                _animator.SetBool("isAttacking",false);
+            }
             Behave();
         }
     }
@@ -28,7 +41,6 @@ public class TreeEnemyAI : EnemyInteligence
         if (health <= 0)
         {
             Die(transform.position);
-            Destroy(gameObject);
         }
     }
 }

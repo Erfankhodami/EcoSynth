@@ -10,8 +10,7 @@ public class BobEnemyAI : EnemyInteligence
     [SerializeField] private bool movingRight = true;
     public Transform groundDetection;
     public float rayLength = 2f;
-    public AudioClip dieSFX;
-    public AudioSource enemySource;
+    
 
     
     private void Update()
@@ -40,7 +39,6 @@ public class BobEnemyAI : EnemyInteligence
         if (health == 0)
         {
             Die(transform.position);
-            Destroy(gameObject);
         }
     }
 }

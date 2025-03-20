@@ -7,6 +7,7 @@ public class EnemyInteligence : MonoBehaviour
     public float movingSpeed = 3;
     [SerializeField] private float overlapCircleRadious = 10;
     [SerializeField] private GameObject inkDrop;
+    public float attackRadious = 1;
     public LayerMask playerLayerMask;
     public LayerMask defaultLayerMask;
     private int flipper = 1;
@@ -17,12 +18,15 @@ public class EnemyInteligence : MonoBehaviour
     public int health;
     public bool isDead;
     public GameObject dieEffect;
-    
+    public AudioClip dieSFX;
+    public AudioSource enemySource;
+    public Animator _animator;
     private void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         playerLayerMask = LayerMask.GetMask("Player");
         defaultLayerMask = LayerMask.GetMask("Default");
+        _animator = GetComponent<Animator>();
     }
     
     public void Behave()
@@ -30,20 +34,22 @@ public class EnemyInteligence : MonoBehaviour
         Vector3 checker = new Vector3(checkerOffset, 0, 0) * flipper;
         Collider2D front = Physics2D.OverlapCircle(transform.position + checker, checkerRadious, defaultLayerMask);
         Collider2D hit = Physics2D.OverlapCircle(transform.position, overlapCircleRadious, playerLayerMask);
-
+        
+        
         if (checkForPlayer)
         {
             if (hit != null)
             {
-                FollowPlayer(hit); // Pass 'front' to check during follow
+                FollowPlayer(hit);
             }
         }
         if(hit==null||!checkForPlayer)
         {
             RoamAround(front);
         }
+        
     }
-
+    
     void RoamAround(Collider2D hit)
     {
         // Flip movement if there's a wall
@@ -74,13 +80,13 @@ public class EnemyInteligence : MonoBehaviour
         {
             movingDir = Vector2.right;
             flipper = 1;
-            _spriteRenderer.flipX = false;
+            _spriteRenderer.flipX = true;
         }
         else
         {
             movingDir = Vector2.left;
             flipper = -1;
-            _spriteRenderer.flipX = true;
+            _spriteRenderer.flipX = false;
         }
 
         
@@ -108,6 +114,8 @@ public class EnemyInteligence : MonoBehaviour
         isDead = true;
         Instantiate(dieEffect, transform.position, Quaternion.identity);
         Instantiate(inkDrop, position, Quaternion.identity);
+        enemySource.PlayOneShot(dieSFX);
+        Destroy(gameObject);
     }
 
 }

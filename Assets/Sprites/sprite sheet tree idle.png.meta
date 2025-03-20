@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b6f1c32601eb7534b9435dfc465cf629
+guid: dcd34a6af5e1a9842add6ddf7e60b75b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,64 +117,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite sheet tree attack_0
+      name: sprite sheet tree idle_0
       rect:
         serializedVersion: 2
-        x: 65
-        y: 61
-        width: 23
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7b3ce7e0cc61cfb49b649f9a7c367e03
-      internalID: 1861934141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite sheet tree attack_1
-      rect:
-        serializedVersion: 2
-        x: 127
-        y: 61
-        width: 22
-        height: 61
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bdee8e00b3f35f749bbb315292dfd59d
-      internalID: 593778592
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: sprite sheet tree attack_2
-      rect:
-        serializedVersion: 2
-        x: 189
+        x: 73
         y: 61
         width: 18
         height: 61
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 241415f80ef38034ca196beb58af5f0c
-      internalID: -1585718333
+      spriteID: 6fde96688dc3fe04480db7d54745c339
+      internalID: -1693981290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite sheet tree idle_1
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 61
+        width: 18
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdcdcf6c2acc8c849a733594185af054
+      internalID: -599279355
       vertices: []
       indices: 
       edges: []
@@ -190,9 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sprite sheet tree attack_0: 1861934141
-      sprite sheet tree attack_2: -1585718333
-      sprite sheet tree attack_1: 593778592
+      sprite sheet tree idle_1: -599279355
+      sprite sheet tree idle_0: -1693981290
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
