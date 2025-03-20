@@ -101,7 +101,7 @@ public class EnemyInteligence : MonoBehaviour
 
     IEnumerator Delay()
     {
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(1);
         checkForPlayer = true;
     }
 
