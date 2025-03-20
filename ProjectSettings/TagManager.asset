@@ -9,6 +9,9 @@ TagManager:
   - Enemy
   - ecoInk
   - spikes
+  - Bob
+  - Slug
+  - Tree
   layers:
   - Default
   - TransparentFX
@@ -16,7 +19,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Player
   - 
   - 
   - 

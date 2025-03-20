@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 28120355de8a25c4abb2adc2dea7aa52
+guid: 71df9048d8a544f4a8e43bc14222f09e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 25
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -101,11 +101,23 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprite sheet slug walk_0
+      name: sprite sheet slug walk 1_0
       rect:
         serializedVersion: 2
         x: 61
@@ -119,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f1e141ea6e385141894e98ee677471a
-      internalID: 968507161
+      spriteID: 8445b75e36711aa4ca991424c8fe8c21
+      internalID: -1469928693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: sprite sheet slug walk_1
+      name: sprite sheet slug walk 1_1
       rect:
         serializedVersion: 2
         x: 144
@@ -140,8 +152,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4a40d8a5cc18624bb98193649160607
-      internalID: 1624182514
+      spriteID: 0efdea9cce773014086b8da0efaf60d0
+      internalID: 1895351058
       vertices: []
       indices: 
       edges: []
@@ -157,8 +169,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sprite sheet slug walk_0: 968507161
-      sprite sheet slug walk_1: 1624182514
+      sprite sheet slug walk 1_1: 1895351058
+      sprite sheet slug walk 1_0: -1469928693
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

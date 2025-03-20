@@ -4,22 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class enemyAILogic : MonoBehaviour
+public class BobEnemyAI : EnemyInteligence
 {
-    public float speed;
+    
     [SerializeField] private bool movingRight = true;
     public Transform groundDetection;
     public float rayLength = 2f;
-    public float health = 10f;
-    public GameObject dieEffect;
-    public bool isDead = false;
     public AudioClip dieSFX;
     public AudioSource enemySource;
 
     
     private void Update()
     {
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * movingSpeed * Time.deltaTime);
         RaycastHit2D groundInfo = Physics2D.Raycast(groundDetection.position, Vector2.down,rayLength);
         
         if (groundInfo.collider == false)
@@ -37,21 +34,13 @@ public class enemyAILogic : MonoBehaviour
         }
     }
 
-    public void takeDamage(int damage)
+    public override void TakeDamage(int damage)
     {
         health -= damage;
         if (health == 0)
         {
-            Die();
+            Die(transform.position);
+            Destroy(gameObject);
         }
-    }
-
-    public void Die()
-    {
-        isDead = true;
-        /*enemySource.PlayOneShot(dieSFX);*/
-        Instantiate(dieEffect, transform.position, Quaternion.identity);
-        
-        
     }
 }

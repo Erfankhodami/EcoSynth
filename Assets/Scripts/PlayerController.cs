@@ -92,12 +92,8 @@ public class PlayerController : MonoBehaviour
         }
         Vector3 spawnPosition = new Vector3(feet.position.x, feet.position.y + effectOffset , feet.position.z);
         Instantiate(jumpLand, spawnPosition, Quaternion.identity);
+
         
-        if (collision.collider.CompareTag("Enemy") && isDashing)
-        {
-            collision.gameObject.GetComponent<enemyAILogic>().takeDamage(10);
-            collision.gameObject.GetComponent<enemyMain>().onDie();
-        }
         if (collision.gameObject.CompareTag("ecoInk"))
         {
             _playerMain.UpdateInkAmount();
@@ -105,17 +101,39 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "Enemy"&&!isDashing)
-        {
-            Vector3 dir = transform.position-collision.transform.position  ;
-            StartCoroutine(Damage(dir));
-        }
+        
 
         if (collision.gameObject.tag == "spikes")
         {
             Die();
         }
         
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (isDashing)
+        {
+            if (col.CompareTag("Bob"))
+            {
+                col.gameObject.GetComponent<BobEnemyAI>().TakeDamage(10);
+            }
+            if (col.CompareTag("Slug"))
+            {
+                col.gameObject.GetComponent<slugEnemyAI>().TakeDamage(10);
+            }
+            if (col.CompareTag("Tree"))
+            {
+                col.gameObject.GetComponent<TreeEnemyAI>().TakeDamage(10);
+            }
+        }
+
+        string tag = col.gameObject.tag;
+        if ( tag== "Bob"||tag=="Slug"||tag=="Tree"&&!isDashing)
+        {
+            Vector3 dir = transform.position-col.transform.position  ;
+            StartCoroutine(Damage(dir));
+        }
     }
 
     IEnumerator Dash()
