@@ -146,6 +146,15 @@ public class PlayerController : MonoBehaviour
             }
         }
 
+        if (col.CompareTag("killArea"))
+        {
+            health -= 100;
+            healthBar.value = health;
+            Instantiate(playerDeathEffect, transform.position, quaternion.identity);
+            Destroy(gameObject,1f);
+            Debug.Log("noob died");
+        }
+
         string tag = col.gameObject.tag;
         if (!isDashing)
         {
@@ -259,6 +268,7 @@ public class PlayerController : MonoBehaviour
     void Heal(int amount)
     {
         health += amount;
+        healthBar.value = health;
         Instantiate(healEatEffect, transform.position, quaternion.identity);
     }
     public void Die()

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   floatspeed: 13
-  flatAmount: 0.3
+  flatAmount: 0.2
   _boxCollider2D: {fileID: 1508201117204832238}
 --- !u!61 &1508201117204832238
 BoxCollider2D:

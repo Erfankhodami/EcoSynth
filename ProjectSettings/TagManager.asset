@@ -14,6 +14,8 @@ TagManager:
   - Tree
   - Mashroom
   - Heart
+  - killArea
+  - levelSwitch
   layers:
   - Default
   - TransparentFX
@@ -22,12 +24,12 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - background1
+  - background2
+  - background3
+  - background4
+  - background5
+  - background6
   - 
   - 
   - 
@@ -53,6 +55,9 @@ TagManager:
     locked: 0
   - name: tilemap
     uniqueID: 3727979521
+    locked: 0
+  - name: player
+    uniqueID: 703177513
     locked: 0
   - name: UI
     uniqueID: 689454677

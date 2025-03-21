@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public enum bridgeType
 {
@@ -22,7 +24,7 @@ public class BridgeSpawn : MonoBehaviour
     private bool isPlacing = false;
     private Vector3 mouseWorldPos;
     public playerMain _playermain;
-    public Text errorText;
+    public TMP_Text errorText;
     public int minForSmall;
     public int minForMedium;
     public int minForLarge;

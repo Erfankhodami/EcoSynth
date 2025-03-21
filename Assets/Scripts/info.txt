@@ -8,3 +8,6 @@ i also changed level design system to tilemap
 4)Gave a countdown system to platfrom forcing player to act quick
 5)gave the player ability to zoom in and out while placing the platforms
 6)gave the player ability to pan around using wasd or mouse while placing the platform(limited movement and zoom btw)
+
+IMPORTANT NOTE:-
+yo efi please do the parallax background cuz I have no idea how to make it, the given code is my own so yeh, you can change it, i tried using Vectors and classes to make it work but it dosent want to, it moves but weirdly, moreover the layer thing is eating my brain
