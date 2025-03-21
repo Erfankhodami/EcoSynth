@@ -38,6 +38,7 @@ public class TreeEnemyAI : EnemyInteligence
     public override void TakeDamage(int damage)
     {
         health -= damage;
+        Instantiate(dieEffect, transform.position, Quaternion.identity);
         if (health <= 0)
         {
             Die(transform.position);

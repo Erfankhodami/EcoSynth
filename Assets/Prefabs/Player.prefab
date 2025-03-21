@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5263783525240781477}
   - component: {fileID: 5263783525240781478}
   - component: {fileID: 7662397934603744676}
+  - component: {fileID: 3766263540936320798}
   - component: {fileID: 318632260774101254}
   - component: {fileID: 1475543168}
   - component: {fileID: 1475543175}
@@ -170,6 +171,7 @@ MonoBehaviour:
   infectionDamageAmount: 3
   healEatEffect: {fileID: 3257241061376418699, guid: 0c031c94d8e03eb46bb17d700a60494b, type: 3}
   infectionEffect: {fileID: 7399880673847465526}
+  swardCollectEffect: {fileID: 0}
   maxHealth: 100
   health: 100
   healthBar: {fileID: 0}
@@ -188,6 +190,9 @@ MonoBehaviour:
   playerTakeDamage: {fileID: 8300000, guid: 8f130b867e55495418fd84148459cfee, type: 3}
   playerDie: {fileID: 8300000, guid: aef5d43b2777fd94cb268a598b36e82b, type: 3}
   playerDeathEffect: {fileID: 1562906094599282119, guid: 7992957dde402b64ba1a6e3696fc824f, type: 3}
+  isSwardCollected: 0
+  isDead: 0
+  isSwarding: 0
 --- !u!114 &7662397934603744676
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,6 +211,24 @@ MonoBehaviour:
   playerCanvas: {fileID: 0}
   printCanvasActive: 0
   mainCanvas: {fileID: 0}
+--- !u!114 &3766263540936320798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5263783525240781479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02173576c817b2041bd4fd7f668ad07b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerController: {fileID: 0}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  damageRadious: 5
+  coolDown: 1
 --- !u!82 &318632260774101254
 AudioSource:
   m_ObjectHideFlags: 0

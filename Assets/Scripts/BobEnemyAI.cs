@@ -36,7 +36,8 @@ public class BobEnemyAI : EnemyInteligence
     public override void TakeDamage(int damage)
     {
         health -= damage;
-        if (health == 0)
+        Instantiate(dieEffect, transform.position, Quaternion.identity);
+        if (health <= 0)
         {
             Die(transform.position);
         }

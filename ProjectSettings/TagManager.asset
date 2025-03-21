@@ -16,6 +16,7 @@ TagManager:
   - Heart
   - killArea
   - levelSwitch
+  - Sward
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - background4
   - background5
   - background6
-  - 
+  - Enemy
   - 
   - 
   - 

@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -28,6 +29,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private int infectionDamageAmount=3;
     [SerializeField] private GameObject healEatEffect;
     [SerializeField] private GameObject infectionEffect;
+    [SerializeField] private GameObject swardCollectEffect;
+    
     
     public int maxHealth = 100;
     public int health;
@@ -47,7 +50,9 @@ public class PlayerController : MonoBehaviour
     public AudioClip playerTakeDamage;
     public AudioClip playerDie;
     public GameObject playerDeathEffect;
-
+    public bool isSwardCollected=false;
+    public bool isDead;
+    public bool isSwarding = false;
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -122,28 +127,18 @@ public class PlayerController : MonoBehaviour
             Heal(10);
             Destroy(collision.gameObject);
         }
+
+        if (collision.gameObject.CompareTag("Sward"))
+        {
+            CollectSward(collision.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (isDashing)
         {
-            if (col.CompareTag("Bob"))
-            {
-                col.gameObject.GetComponent<BobEnemyAI>().TakeDamage(10);
-            }
-            if (col.CompareTag("Slug"))
-            {
-                col.gameObject.GetComponent<slugEnemyAI>().TakeDamage(10);
-            }
-            if (col.CompareTag("Tree"))
-            {
-                col.gameObject.GetComponent<TreeEnemyAI>().TakeDamage(10);
-            }
-            if (col.CompareTag("Mashroom"))
-            {
-                col.gameObject.GetComponent<MashroomEnemyAI>().TakeDamage(10);
-            }
+            EnemyDamage(col,10);
         }
 
         if (col.CompareTag("killArea"))
@@ -250,6 +245,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void EnemyDamage(Collider2D col,int amount)
+    {
+        if (col.CompareTag("Bob"))
+        {
+            col.gameObject.GetComponent<BobEnemyAI>().TakeDamage(amount);
+        }
+        if (col.CompareTag("Slug"))
+        {
+            col.gameObject.GetComponent<slugEnemyAI>().TakeDamage(amount);
+        }
+        if (col.CompareTag("Tree"))
+        {
+            col.gameObject.GetComponent<TreeEnemyAI>().TakeDamage(amount);
+        }
+        if (col.CompareTag("Mashroom"))
+        {
+            col.gameObject.GetComponent<MashroomEnemyAI>().TakeDamage(amount);
+        }
+    }
     IEnumerator Infect()
     {
         infectionEffect.SetActive(true);
@@ -271,6 +285,13 @@ public class PlayerController : MonoBehaviour
         healthBar.value = health;
         Instantiate(healEatEffect, transform.position, quaternion.identity);
     }
+
+    void CollectSward(GameObject sward)
+    {
+        Destroy(sward);
+        Instantiate(swardCollectEffect, transform.position, Quaternion.identity);
+        isSwardCollected = true;
+    }
     public void Die()
     {
         health = 0;
@@ -278,5 +299,6 @@ public class PlayerController : MonoBehaviour
         audioSource.PlayOneShot(playerDie);
         Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject, 2f);
+        isDead = true;
     }
 }

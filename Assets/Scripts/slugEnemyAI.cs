@@ -20,8 +20,9 @@ public class slugEnemyAI : EnemyInteligence
     }
     public override void TakeDamage(int damage)
     {
+        Instantiate(dieEffect, transform.position, Quaternion.identity);
         health -= damage;
-        if (health == 0)
+        if (health <= 0)
         {
             Die(transform.position);
         }
