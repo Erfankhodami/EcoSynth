@@ -12,6 +12,8 @@ TagManager:
   - Bob
   - Slug
   - Tree
+  - Mashroom
+  - Heart
   layers:
   - Default
   - TransparentFX

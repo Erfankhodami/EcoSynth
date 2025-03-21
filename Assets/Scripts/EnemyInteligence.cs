@@ -7,6 +7,7 @@ public class EnemyInteligence : MonoBehaviour
     public float movingSpeed = 3;
     [SerializeField] private float overlapCircleRadious = 10;
     [SerializeField] private GameObject inkDrop;
+    public GameObject heart;
     public float attackRadious = 1;
     public LayerMask playerLayerMask;
     public LayerMask defaultLayerMask;

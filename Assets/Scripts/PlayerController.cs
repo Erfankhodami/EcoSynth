@@ -11,19 +11,28 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D playerRB;
     private PlayerAnimatorContoller _playerAnimatorContoller;
+    private int jumpCount = 2;
+    private SpriteRenderer _spriteRenderer;
+    private playerMain _playerMain;
+    private bool isInfected;
+    
     [SerializeField] private float movingSpeed = 7000;
     [SerializeField] private float horizontalDrag = 8;
     [SerializeField] private float jumpingPower = 35;
     [SerializeField] private bool canDash = true;
     [SerializeField] private bool isDashing = false;
     [SerializeField] private float damageForce = 10;
-    [SerializeField] private float damageEffectTime = .5f;
+    [SerializeField] private float damageEffectTime = .2f;
+    [SerializeField] private int enemyDamageAmount=10;
+    [SerializeField] private int spikesDamageAmount=5;
+    [SerializeField] private int infectionDamageAmount=3;
+    [SerializeField] private GameObject healEatEffect;
+    [SerializeField] private GameObject infectionEffect;
     
     public int maxHealth = 100;
     public int health;
     public Slider healthBar; // ✅ Health Bar
     public Slider dashCooldownBar; // ✅ Dash Cooldown Bar
-    
     public float movingControll;
     public float dashCoolDown = 2f; // Cooldown time in seconds
     public float timeToDash = 1.5f;
@@ -34,10 +43,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip dashSound;
     public AudioSource audioSource;
-    private int jumpCount = 2;
-    private playerMain _playerMain;
     public GameObject ecoInkEffect;
-    private SpriteRenderer _spriteRenderer;
     public AudioClip playerTakeDamage;
     public AudioClip playerDie;
     public GameObject playerDeathEffect;
@@ -97,6 +103,13 @@ public class PlayerController : MonoBehaviour
         Vector3 spawnPosition = new Vector3(feet.position.x, feet.position.y + effectOffset, feet.position.z);
         Instantiate(jumpLand, spawnPosition, Quaternion.identity);
 
+        
+
+        if (collision.gameObject.tag == "spikes")
+        {
+            StartCoroutine(Damage(Vector3.up,spikesDamageAmount,damageForce,false));
+        }
+        
         if (collision.gameObject.CompareTag("ecoInk"))
         {
             _playerMain.UpdateInkAmount();
@@ -104,10 +117,11 @@ public class PlayerController : MonoBehaviour
             Destroy(collision.gameObject);
         }
 
-        /*if (collision.gameObject.tag == "spikes")
+        if (collision.gameObject.CompareTag("Heart"))
         {
-            TakeDamage(20);
-        }*/
+            Heal(10);
+            Destroy(collision.gameObject);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -126,13 +140,27 @@ public class PlayerController : MonoBehaviour
             {
                 col.gameObject.GetComponent<TreeEnemyAI>().TakeDamage(10);
             }
+            if (col.CompareTag("Mashroom"))
+            {
+                col.gameObject.GetComponent<MashroomEnemyAI>().TakeDamage(10);
+            }
         }
 
         string tag = col.gameObject.tag;
-        if ((tag == "Bob" || tag == "Slug" || tag == "Tree") && !isDashing)
+        if (!isDashing)
         {
-            Vector3 dir = transform.position - col.transform.position;
-            StartCoroutine(Damage(dir));
+            if (tag == "Bob" || tag == "Slug" || tag == "Tree")
+            {
+                Vector3 dir = transform.position - col.transform.position;
+                StartCoroutine(Damage(dir, enemyDamageAmount, damageForce,false));
+            }
+
+            if (tag == "Mashroom"&&!isInfected)
+            {
+                Vector3 dir = transform.position - col.transform.position;
+                StartCoroutine(Damage(dir, enemyDamageAmount, damageForce,true));
+                StartCoroutine(Infect());
+            }
         }
     }
 
@@ -183,9 +211,9 @@ public class PlayerController : MonoBehaviour
     }
 
     // Health Bar Logic (No Changes)
-    IEnumerator Damage(Vector3 dir)
+    IEnumerator Damage(Vector3 dir,int amount,float force,bool infectMode)
     {
-        health -= 10;
+        health -= amount;
         health = Mathf.Clamp(health, 0, maxHealth);
         healthBar.value = health;
 
@@ -194,11 +222,18 @@ public class PlayerController : MonoBehaviour
         {
             fliper = -1;
         }
-        playerRB.AddForce(new Vector3(fliper, .5f, 0) * damageForce, ForceMode2D.Impulse);
+        playerRB.AddForce(new Vector3(fliper, .5f, 0) * force, ForceMode2D.Impulse);
         _spriteRenderer.color = Color.red;
         yield return new WaitForSeconds(damageEffectTime);
         audioSource.PlayOneShot(playerTakeDamage);
-        _spriteRenderer.color = Color.white;
+        if (!infectMode)
+        {
+            _spriteRenderer.color = Color.white;
+        }
+        else
+        {
+            _spriteRenderer.color=Color.green;
+        }
 
         if (health <= 0)
         {
@@ -206,13 +241,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    IEnumerator Infect()
+    {
+        infectionEffect.SetActive(true);
+        isInfected = true;
+        for (int i = 0; i < 8; i++)
+        {
+            _spriteRenderer.color=Color.green; 
+            StartCoroutine(Damage(Vector3.up, infectionDamageAmount, 0,true));
+            yield return new WaitForSeconds(2);
+        }
+        _spriteRenderer.color=Color.white;
+        isInfected = false;
+        infectionEffect.SetActive(false);
+    }
+
+    void Heal(int amount)
+    {
+        health += amount;
+        Instantiate(healEatEffect, transform.position, quaternion.identity);
+    }
     public void Die()
     {
         health = 0;
         healthBar.value = health;
         audioSource.PlayOneShot(playerDie);
         Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
-        Debug.Log("dead!!!");
         Destroy(gameObject, 2f);
     }
 }
