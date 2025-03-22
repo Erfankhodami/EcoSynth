@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 98381742}
   - component: {fileID: 98381743}
   m_Layer: 0
-  m_Name: EnemySoundPlayer
+  m_Name: SoundPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -707,6 +707,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2002138587}
     - target: {fileID: 5263783525240781478, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 98381743}
+    - target: {fileID: 5263783525240781478, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
       propertyPath: healEatEffect
       value: 
       objectReference: {fileID: 194787719948541501, guid: e46d83929e792ae43918088c4bba17d2, type: 3}
@@ -766,7 +770,8 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 318632260774101254, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
 --- !u!1 &222072231
 GameObject:
@@ -25137,6 +25142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ee6770a12a8c148b3774b563ee977e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerController: {fileID: 0}
   playerObject: {fileID: 1475543161}
   smoothSpeed: 5
   offset: {x: 0, y: 0, z: -10}

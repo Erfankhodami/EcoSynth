@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip playerTakeDamage;
     public AudioClip playerDie;
     public GameObject playerDeathEffect;
+    public AudioClip swardCollectingSFX;
     public bool isSwardCollected=false;
     public bool isDead;
     public bool isSwarding = false;
@@ -159,11 +160,14 @@ public class PlayerController : MonoBehaviour
                 StartCoroutine(Damage(dir, enemyDamageAmount, damageForce,false));
             }
 
-            if (tag == "Mashroom"&&!isInfected)
+            if (tag == "Mashroom")
             {
                 Vector3 dir = transform.position - col.transform.position;
                 StartCoroutine(Damage(dir, enemyDamageAmount, damageForce,true));
-                StartCoroutine(Infect());
+                if (!isInfected)
+                {
+                    StartCoroutine(Infect());
+                }
             }
         }
     }
@@ -291,6 +295,7 @@ public class PlayerController : MonoBehaviour
         Destroy(sward);
         Instantiate(swardCollectEffect, transform.position, Quaternion.identity);
         isSwardCollected = true;
+        audioSource.PlayOneShot(swardCollectingSFX);
     }
     public void Die()
     {
@@ -298,7 +303,7 @@ public class PlayerController : MonoBehaviour
         healthBar.value = health;
         audioSource.PlayOneShot(playerDie);
         Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
-        Destroy(gameObject, 2f);
+        Destroy(gameObject);
         isDead = true;
     }
 }

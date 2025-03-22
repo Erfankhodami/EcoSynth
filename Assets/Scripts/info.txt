@@ -1,5 +1,6 @@
-﻿i implemented a new way to spawn bridges so you just need to call the spawnbridge method in bridgeSpawn script to spawn one of them
-i also changed level design system to tilemap
+﻿i fixed the parallax system
+for level design you need to put two boxes at the end of the platform like i did to prevent enemies from going to sky cuz we dont have time to fix that
+do the final ui 
 
 #Uchiha Section :)
 1)fixed printer system to use mouse to place(sadly took longer than I anticipated)
@@ -11,3 +12,4 @@ i also changed level design system to tilemap
 
 IMPORTANT NOTE:-
 yo efi please do the parallax background cuz I have no idea how to make it, the given code is my own so yeh, you can change it, i tried using Vectors and classes to make it work but it dosent want to, it moves but weirdly, moreover the layer thing is eating my brain
+got you homie;)

@@ -32,7 +32,7 @@ TagManager:
   - background5
   - background6
   - Enemy
-  - 
+  - tilemap
   - 
   - 
   - 
@@ -51,6 +51,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: background
+    uniqueID: 4187387475
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

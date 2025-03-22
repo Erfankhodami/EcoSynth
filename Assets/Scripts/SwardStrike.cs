@@ -7,13 +7,16 @@ public class SwardStrike : MonoBehaviour
     private PlayerController _playerController;
     private LayerMask enemyLayerMask;
     private Animator _animator;
+    private AudioSource _audioSource;
     [SerializeField] private float damageRadious=2;
     [SerializeField] private float coolDown=1;
+    [SerializeField] private AudioClip swepeSFX;
     void Start()
     {
         _animator = GetComponent<Animator>();
         enemyLayerMask = LayerMask.GetMask("Enemy");
         _playerController = GetComponent<PlayerController>();
+        _audioSource = _playerController.audioSource;
     }
     void Update()
     {
@@ -22,6 +25,7 @@ public class SwardStrike : MonoBehaviour
         {
             _playerController.isSwarding = true;
             _animator.SetTrigger("isSwarding");
+            _audioSource.PlayOneShot(swepeSFX);
             if (hit != null)
             {
                 Debug.Log(hit.gameObject.tag);

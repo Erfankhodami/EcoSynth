@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,8 +10,9 @@ public class EnemyInteligence : MonoBehaviour
     [SerializeField] private GameObject inkDrop;
     public GameObject heart;
     public float attackRadious = 1;
-    public LayerMask playerLayerMask;
-    public LayerMask defaultLayerMask;
+    [HideInInspector] public LayerMask playerLayerMask;
+    [HideInInspector] public LayerMask defaultLayerMask;
+    [HideInInspector] public LayerMask tilemapLayerMask;
     private int flipper = 1;
     private SpriteRenderer _spriteRenderer;
     private float checkerOffset=1;
@@ -27,6 +29,7 @@ public class EnemyInteligence : MonoBehaviour
         _spriteRenderer = GetComponent<SpriteRenderer>();
         playerLayerMask = LayerMask.GetMask("Player");
         defaultLayerMask = LayerMask.GetMask("Default");
+        tilemapLayerMask = LayerMask.GetMask("tilemap");
         _animator = GetComponent<Animator>();
     }
     
@@ -35,8 +38,7 @@ public class EnemyInteligence : MonoBehaviour
         Vector3 checker = new Vector3(checkerOffset, 0, 0) * flipper;
         Collider2D front = Physics2D.OverlapCircle(transform.position + checker, checkerRadious, defaultLayerMask);
         Collider2D hit = Physics2D.OverlapCircle(transform.position, overlapCircleRadious, playerLayerMask);
-        
-        
+
         if (checkForPlayer)
         {
             if (hit != null)
