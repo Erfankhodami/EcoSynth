@@ -24,7 +24,7 @@ public class sineWaveForEcoInk : MonoBehaviour
 
     IEnumerator EnableTrigger()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.3f);
         isCollactable = true;
     }
 }

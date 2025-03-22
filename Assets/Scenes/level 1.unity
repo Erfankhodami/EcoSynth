@@ -820,7 +820,7 @@ PrefabInstance:
     - target: {fileID: 3766263540936320798, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
       propertyPath: swepeSFX
       value: 
-      objectReference: {fileID: 8300000, guid: 7f8578e586074234caf12cde481cc258, type: 3}
+      objectReference: {fileID: 8300000, guid: f12b1f9b65368d944b3dfcce5f7f91b9, type: 3}
     - target: {fileID: 5263783525240781467, guid: 76311ab0337b38147ae0d48ceae971e6, type: 3}
       propertyPath: m_RootOrder
       value: 9

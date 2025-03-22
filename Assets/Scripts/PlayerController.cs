@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
             isSwardCollected = true;
         }
 
+        isSwardCollected = _playerMain._mainManager.playerGotSward;
         _playerMain.numberofEcoInk = _playerMain._mainManager.numberOfEcoInk;
         _playerMain.UpdateInkAmount();
     }
