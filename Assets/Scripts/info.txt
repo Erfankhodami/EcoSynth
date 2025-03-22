@@ -3,7 +3,7 @@ READ THIS TO SYNC WITH ME:
 for level design you need to put two boxes at the end of the platform like i did to prevent enemies from going to sky cuz we dont have time to fix that
 do the final ui 
 use decoration tilemaps for decorating the sceene like i did
-if you wanna bring an enemy to drop sward jsut give him the swardSpawner script like the tree in the second level
+cript like the tree in the second levelif you wanna bring an enemy to drop sward jsut give him the swardSpawner s
 try to use tilemap fpr decorting scene its easier and much more effective
 every scenes need to have a game object named MainManager with script of MainManager this is for scene transitions management
 name of the portal is the next scene it opens

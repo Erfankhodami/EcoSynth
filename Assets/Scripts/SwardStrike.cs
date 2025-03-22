@@ -21,7 +21,7 @@ public class SwardStrike : MonoBehaviour
     void Update()
     {
         Collider2D hit = Physics2D.OverlapCircle(transform.position, damageRadious, enemyLayerMask);
-        if (Input.GetKeyDown(KeyCode.Tab)&& !_playerController.isSwarding&& _playerController.isSwardCollected)
+        if (Input.GetMouseButtonDown(0)&& !_playerController.isSwarding&& _playerController.isSwardCollected)
         {
             _playerController.isSwarding = true;
             _animator.SetTrigger("isSwarding");

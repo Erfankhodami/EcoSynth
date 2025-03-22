@@ -51899,6 +51899,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: parallaxBackgrounds
       objectReference: {fileID: 0}
+    - target: {fileID: 2449310292588313655, guid: c89f22675dd3f3b409cef44d9d2baa06, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3837262999925475419, guid: c89f22675dd3f3b409cef44d9d2baa06, type: 3}
       propertyPath: m_SortingLayer
       value: -1
@@ -52394,17 +52398,33 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4705107733813733684, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
+      propertyPath: m_Size.x
+      value: 0.5420288
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705107733813733684, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
+      propertyPath: m_Size.y
+      value: 0.47418204
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705107733813733684, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.0084811
+      objectReference: {fileID: 0}
+    - target: {fileID: 4705107733813733684, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.025442734
+      objectReference: {fileID: 0}
     - target: {fileID: 4705107733813733685, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
       propertyPath: m_RootOrder
       value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 4705107733813733685, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 102.5
+      value: 103.14
       objectReference: {fileID: 0}
     - target: {fileID: 4705107733813733685, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.1
+      value: -3.82
       objectReference: {fileID: 0}
     - target: {fileID: 4705107733813733685, guid: 6f6d04e84aabdf749a6504a66ecf4dda, type: 3}
       propertyPath: m_LocalPosition.z
