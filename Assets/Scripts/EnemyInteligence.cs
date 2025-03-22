@@ -83,12 +83,22 @@ public class EnemyInteligence : MonoBehaviour
             movingDir = Vector2.right;
             flipper = 1;
             _spriteRenderer.flipX = true;
+            
+            //just for mashroom ahhh
+            if (gameObject.tag == "Mashroom")
+            {
+                _spriteRenderer.flipX = false;
+            }
         }
         else
         {
             movingDir = Vector2.left;
             flipper = -1;
             _spriteRenderer.flipX = false;
+            if (gameObject.tag == "Mashroom")
+            {
+                _spriteRenderer.flipX = true;
+            }
         }
 
         
