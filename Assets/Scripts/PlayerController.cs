@@ -6,6 +6,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Playables;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -30,8 +31,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject healEatEffect;
     [SerializeField] private GameObject infectionEffect;
     [SerializeField] private GameObject swardCollectEffect;
-    
-    
+
     public int maxHealth = 100;
     public int health;
     public Slider healthBar; // ✅ Health Bar
@@ -69,6 +69,13 @@ public class PlayerController : MonoBehaviour
         // ✅ Initialize Dash Cooldown Bar
         dashCooldownBar.maxValue = dashCoolDown;
         dashCooldownBar.value = dashCoolDown; // Full at start (dash is ready)
+        if (_playerMain._mainManager.playerGotSward)
+        {
+            isSwardCollected = true;
+        }
+
+        _playerMain.numberofEcoInk = _playerMain._mainManager.numberOfEcoInk;
+        _playerMain.UpdateInkAmount();
     }
 
     void Update()
@@ -118,6 +125,7 @@ public class PlayerController : MonoBehaviour
         
         if (collision.gameObject.CompareTag("ecoInk"))
         {
+            _playerMain.numberofEcoInk++;
             _playerMain.UpdateInkAmount();
             Instantiate(ecoInkEffect, collision.gameObject.transform.position, Quaternion.identity);
             Destroy(collision.gameObject);
@@ -169,6 +177,11 @@ public class PlayerController : MonoBehaviour
                     StartCoroutine(Infect());
                 }
             }
+        }
+
+        if (col.gameObject.CompareTag("Portal"))
+        {
+            _playerMain._mainManager.SwitchScene(col.gameObject.name);
         }
     }
 
@@ -296,6 +309,7 @@ public class PlayerController : MonoBehaviour
         Instantiate(swardCollectEffect, transform.position, Quaternion.identity);
         isSwardCollected = true;
         audioSource.PlayOneShot(swardCollectingSFX);
+        _playerMain._mainManager.playerGotSward = true;
     }
     public void Die()
     {

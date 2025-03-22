@@ -12,6 +12,12 @@ public class playerMain : MonoBehaviour
     public GameObject playerCanvas;
     public bool printCanvasActive = false;
     public GameObject mainCanvas;
+    public MainManager _mainManager;
+
+    private void Awake()
+    {
+        _mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
+    }
 
     private void Update()
     {
@@ -31,9 +37,9 @@ public class playerMain : MonoBehaviour
     //moved ink collision check to playercontroller script
     public void UpdateInkAmount()
     {
-        numberofEcoInk += 1;
         ecoIndicator.text = "x" + numberofEcoInk;
         Debug.Log("Gained Ink to print!");
+        _mainManager.numberOfEcoInk = numberofEcoInk;
     }
 
     //is this needed to be an ienumerator method?

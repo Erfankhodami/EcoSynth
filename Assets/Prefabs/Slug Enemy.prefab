@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8218694696566909693}
   - component: {fileID: 8218694696566909694}
   - component: {fileID: 8218694696566909689}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Slug Enemy
   m_TagString: Slug
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 24
   m_Sprite: {fileID: 434456455, guid: 5c376634ddaaf334b86642c7a8af4505, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -102,11 +102,15 @@ MonoBehaviour:
   movingSpeed: 2
   overlapCircleRadious: 10
   inkDrop: {fileID: 3257241061376418699, guid: 0c031c94d8e03eb46bb17d700a60494b, type: 3}
+  heart: {fileID: 0}
   attackRadious: 2
   playerLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   defaultLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  tilemapLayerMask:
     serializedVersion: 2
     m_Bits: 0
   health: 10
@@ -114,7 +118,7 @@ MonoBehaviour:
   dieEffect: {fileID: 1562906094599282119, guid: b6fd9bd402c21a5488e6694efa4380a7, type: 3}
   dieSFX: {fileID: 8300000, guid: 6930f258cf01d914bbfecc8778f12c2d, type: 3}
   enemySource: {fileID: 0}
-  _animator: {fileID: 0}
+  _animator: {fileID: 8218694696566909689}
 --- !u!70 &8218694696566909694
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

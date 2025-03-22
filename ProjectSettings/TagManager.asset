@@ -17,6 +17,7 @@ TagManager:
   - killArea
   - levelSwitch
   - Sward
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -52,7 +53,7 @@ TagManager:
   - 
   m_SortingLayers:
   - name: background
-    uniqueID: 4187387475
+    uniqueID: 888196581
     locked: 0
   - name: Default
     uniqueID: 0

@@ -13,7 +13,8 @@ GameObject:
   - component: {fileID: 201007432201693464}
   - component: {fileID: 201007432201693468}
   - component: {fileID: 201007432201693465}
-  m_Layer: 0
+  - component: {fileID: 1135288749}
+  m_Layer: 13
   m_Name: Tree enemy
   m_TagString: Tree
   m_Icon: {fileID: 0}
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: -1693981290, guid: dcd34a6af5e1a9842add6ddf7e60b75b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -118,11 +119,15 @@ MonoBehaviour:
   movingSpeed: 3
   overlapCircleRadious: 10
   inkDrop: {fileID: 3257241061376418699, guid: 0c031c94d8e03eb46bb17d700a60494b, type: 3}
+  heart: {fileID: 0}
   attackRadious: 5
   playerLayerMask:
     serializedVersion: 2
     m_Bits: 0
   defaultLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
+  tilemapLayerMask:
     serializedVersion: 2
     m_Bits: 0
   health: 6
@@ -152,3 +157,16 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
+--- !u!114 &1135288749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 201007432201693462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a57a834c2896c84bbd745a2705dcd8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  swardPrefab: {fileID: 3171636320309347102, guid: 09d675f79d640ef47a8b48271cb3815d, type: 3}

@@ -1,6 +1,11 @@
 ﻿i fixed the parallax system
 for level design you need to put two boxes at the end of the platform like i did to prevent enemies from going to sky cuz we dont have time to fix that
 do the final ui 
+use decoration tilemaps for decorating the sceene like i did
+if you wanna bring an enemy to drop sward jsut give him the swardSpawner script like the tree in the second level
+try to use tilemap fpr decorting scene its easier and much more effective
+every scenes need to have a game object named MainManager with script of MainManager this is for scene transitions management
+name of the portal is the next scene it opens
 
 #Uchiha Section :)
 1)fixed printer system to use mouse to place(sadly took longer than I anticipated)
@@ -12,4 +17,5 @@ do the final ui
 
 IMPORTANT NOTE:-
 yo efi please do the parallax background cuz I have no idea how to make it, the given code is my own so yeh, you can change it, i tried using Vectors and classes to make it work but it dosent want to, it moves but weirdly, moreover the layer thing is eating my brain
-got you homie;)
+okay got you homie;)
+the parallaxController scripts handles everything
