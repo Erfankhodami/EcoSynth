@@ -123,28 +123,38 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(Damage(Vector3.up,spikesDamageAmount,damageForce,false));
         }
         
-        if (collision.gameObject.CompareTag("ecoInk"))
-        {
-            _playerMain.numberofEcoInk++;
-            _playerMain.UpdateInkAmount();
-            Instantiate(ecoInkEffect, collision.gameObject.transform.position, Quaternion.identity);
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Heart"))
-        {
-            Heal(10);
-            Destroy(collision.gameObject);
-        }
-
-        if (collision.gameObject.CompareTag("Sward"))
-        {
-            CollectSward(collision.gameObject);
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (col.gameObject.CompareTag("ecoInk"))
+        {
+            if (col.gameObject.GetComponent<sineWaveForEcoInk>().isCollactable)
+            {
+                _playerMain.numberofEcoInk++;
+                _playerMain.UpdateInkAmount();
+                Instantiate(ecoInkEffect, col.gameObject.transform.position, Quaternion.identity);
+                Destroy(col.gameObject);
+            }
+        }
+
+        if (col.gameObject.CompareTag("Heart"))
+        {
+            if (col.gameObject.GetComponent<sineWaveForEcoInk>().isCollactable)
+            {
+                Heal(10);
+                Destroy(col.gameObject);
+            }
+        }
+        
+        if (col.gameObject.CompareTag("Sward"))
+        {
+            if (col.gameObject.GetComponent<sineWaveForEcoInk>().isCollactable)
+            {
+                CollectSward(col.gameObject);
+            }
+        }
+        
         if (isDashing)
         {
             EnemyDamage(col,10);

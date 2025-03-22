@@ -6,6 +6,7 @@ if you wanna bring an enemy to drop sward jsut give him the swardSpawner script 
 try to use tilemap fpr decorting scene its easier and much more effective
 every scenes need to have a game object named MainManager with script of MainManager this is for scene transitions management
 name of the portal is the next scene it opens
+for now you make boss fight by making a new script to controll it then we will complete the level design and finish this game
 
 #Uchiha Section :)
 1)fixed printer system to use mouse to place(sadly took longer than I anticipated)

@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MashroomEnemyAI : EnemyInteligence
 {
+    [SerializeField] private GameObject heart;
+
     private void Update()
     {
         Collider2D atackCheck = Physics2D.OverlapCircle(transform.position, attackRadious, playerLayerMask);

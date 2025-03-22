@@ -9,8 +9,7 @@ public class sineWaveForEcoInk : MonoBehaviour
     public float flatAmount = 0.2f;
 
     private Vector3 startPos;
-    [SerializeField] private BoxCollider2D _boxCollider2D;
-
+    public bool isCollactable = false;
     private void Start()
     {
         startPos = transform.position;
@@ -25,8 +24,7 @@ public class sineWaveForEcoInk : MonoBehaviour
 
     IEnumerator EnableTrigger()
     {
-        _boxCollider2D.isTrigger = true;
         yield return new WaitForSeconds(1);
-        _boxCollider2D.isTrigger = false;
+        isCollactable = true;
     }
 }
