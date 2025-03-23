@@ -1,14 +1,5 @@
-﻿i fixed the parallax system
-READ THIS TO SYNC WITH ME:
-for level design you need to put two boxes at the end of the platform like i did to prevent enemies from going to sky cuz we dont have time to fix that
-do the final ui 
-use decoration tilemaps for decorating the sceene like i did
-cript like the tree in the second levelif you wanna bring an enemy to drop sward jsut give him the swardSpawner s
-try to use tilemap fpr decorting scene its easier and much more effective
-every scenes need to have a game object named MainManager with script of MainManager this is for scene transitions management
-name of the portal is the next scene it opens
-i added a layermask for enemies so keep in mind to assign it to every enemies you make or the sward not gonna work
-for now you make boss fight by making a new script to controll it then we will complete the level design and finish this game
+﻿hi uchiha here is something you should know
+i made the player sward attack system with tab that feels better i think
 
 #Uchiha Section :)
 1)fixed printer system to use mouse to place(sadly took longer than I anticipated)

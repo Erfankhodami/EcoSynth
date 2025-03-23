@@ -14,7 +14,7 @@ public class playerMain : MonoBehaviour
     public GameObject mainCanvas;
     public MainManager _mainManager;
 
-    private void Start()
+    private void Awake()
     {
         _mainManager = GameObject.Find("MainManager").GetComponent<MainManager>();
     }

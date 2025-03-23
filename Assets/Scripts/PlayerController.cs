@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject healEatEffect;
     [SerializeField] private GameObject infectionEffect;
     [SerializeField] private GameObject swardCollectEffect;
-
+    
+    public EcoPrinterController Boss;
     public int maxHealth = 100;
     public int health;
     public Slider healthBar; // ✅ Health Bar
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
         isSwardCollected = _playerMain._mainManager.playerGotSward;
         _playerMain.numberofEcoInk = _playerMain._mainManager.numberOfEcoInk;
         _playerMain.UpdateInkAmount();
+        Boss = GameObject.FindWithTag("Boss").GetComponent<EcoPrinterController>();
     }
 
     void Update()
@@ -159,7 +161,22 @@ public class PlayerController : MonoBehaviour
         if (isDashing)
         {
             EnemyDamage(col,10);
+            
+                if (col.gameObject.CompareTag("BossWeakSpot"))
+                {
+                    Boss.DamageBoss(12);
+                    Debug.Log("boss dash weak spot");
+                }
+
+                if (col.gameObject.CompareTag("BossNormalSpot"))
+                {
+                    Boss.DamageBoss(5);
+                    Debug.Log("boss dash normal spot");
+                }
+            
         }
+
+        
 
         if (col.CompareTag("killArea"))
         {
@@ -177,6 +194,12 @@ public class PlayerController : MonoBehaviour
             {
                 Vector3 dir = transform.position - col.transform.position;
                 StartCoroutine(Damage(dir, enemyDamageAmount, damageForce,false));
+            }
+
+            if (tag == "Boss")
+            {
+                Vector3 dir = transform.position - col.transform.position;
+                StartCoroutine(Damage(dir, Boss.DamagePower, damageForce,false));
             }
 
             if (tag == "Mashroom")

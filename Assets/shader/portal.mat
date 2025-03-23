@@ -44,7 +44,7 @@ Material:
     m_Floats:
     - _brightness: 1.1
     - _speed: -0.72
-    - _stregth: 22.57
+    - _stregth: 25.59
     m_Colors:
-    - _Color: {r: 236.0708, g: 42.67909, b: 0, a: 0}
+    - _Color: {r: 13.76636, g: 2.5226314, b: 0, a: 0}
   m_BuildTextureStacks: []

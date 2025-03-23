@@ -18,6 +18,9 @@ TagManager:
   - levelSwitch
   - Sward
   - Portal
+  - Boss
+  - BossWeakSpot
+  - BossNormalSpot
   layers:
   - Default
   - TransparentFX

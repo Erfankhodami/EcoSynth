@@ -25808,7 +25808,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1135288749, guid: 75ee4a0dfc653df468744f3bfbf7eeb4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 75ee4a0dfc653df468744f3bfbf7eeb4, type: 3}
 --- !u!1001 &770505800
 PrefabInstance:
@@ -26138,7 +26139,7 @@ MonoBehaviour:
   priority: 1
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: ba9b1c9efc7200744b26423b623e9dda, type: 2}
+  sharedProfile: {fileID: 11400000, guid: c9a0d1106ff17324085478e080c5eead, type: 2}
 --- !u!4 &963437651
 Transform:
   m_ObjectHideFlags: 0
@@ -29434,7 +29435,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2449310292588313652, guid: c89f22675dd3f3b409cef44d9d2baa06, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.56
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2449310292588313652, guid: c89f22675dd3f3b409cef44d9d2baa06, type: 3}
       propertyPath: m_LocalRotation.w
