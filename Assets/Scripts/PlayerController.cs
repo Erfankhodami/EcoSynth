@@ -31,7 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject healEatEffect;
     [SerializeField] private GameObject infectionEffect;
     [SerializeField] private GameObject swardCollectEffect;
-    
+    [SerializeField] private AudioClip inkCollectSFX;
+    [SerializeField] private GameObject deadMenu;
     public EcoPrinterController Boss;
     public int maxHealth = 100;
     public int health;
@@ -78,7 +79,7 @@ public class PlayerController : MonoBehaviour
         isSwardCollected = _playerMain._mainManager.playerGotSward;
         _playerMain.numberofEcoInk = _playerMain._mainManager.numberOfEcoInk;
         _playerMain.UpdateInkAmount();
-        Boss = GameObject.FindWithTag("Boss").GetComponent<EcoPrinterController>();
+        Boss = GameObject.FindWithTag("Boss")?.GetComponent<EcoPrinterController>();
     }
 
     void Update()
@@ -134,6 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             if (col.gameObject.GetComponent<sineWaveForEcoInk>().isCollactable)
             {
+                audioSource.PlayOneShot(inkCollectSFX);
                 _playerMain.numberofEcoInk++;
                 _playerMain.UpdateInkAmount();
                 Instantiate(ecoInkEffect, col.gameObject.transform.position, Quaternion.identity);
@@ -145,7 +147,7 @@ public class PlayerController : MonoBehaviour
         {
             if (col.gameObject.GetComponent<sineWaveForEcoInk>().isCollactable)
             {
-                Heal(10);
+                Heal();
                 Destroy(col.gameObject);
             }
         }
@@ -180,10 +182,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.CompareTag("killArea"))
         {
-            health -= 100;
-            healthBar.value = health;
-            Instantiate(playerDeathEffect, transform.position, quaternion.identity);
-            Destroy(gameObject,1f);
+            Die();
             Debug.Log("noob died");
         }
 
@@ -319,20 +318,20 @@ public class PlayerController : MonoBehaviour
     {
         infectionEffect.SetActive(true);
         isInfected = true;
-        for (int i = 0; i < 8; i++)
+        for (int i = 0; i < 6; i++)
         {
             _spriteRenderer.color=Color.green; 
             StartCoroutine(Damage(Vector3.up, infectionDamageAmount, 0,true));
-            yield return new WaitForSeconds(2);
+            yield return new WaitForSeconds(1.5f);
         }
         _spriteRenderer.color=Color.white;
         isInfected = false;
         infectionEffect.SetActive(false);
     }
 
-    void Heal(int amount)
+    void Heal()
     {
-        health += amount;
+        health = maxHealth;
         healthBar.value = health;
         Instantiate(healEatEffect, transform.position, quaternion.identity);
     }
@@ -353,5 +352,6 @@ public class PlayerController : MonoBehaviour
         Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
         Destroy(gameObject);
         isDead = true;
+        deadMenu.SetActive(true);
     }
 }

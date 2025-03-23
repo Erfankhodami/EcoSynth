@@ -20,6 +20,8 @@ public class EcoPrinterController : MonoBehaviour
     [SerializeField] private float attackRadious = 3;
     [SerializeField] private AudioClip musicClip;
     [SerializeField] private AudioClip damageClip;
+    [SerializeField] private GameObject wonMenu;
+    [SerializeField] private AudioClip damageTakingClip;
     public int DamagePower;
     private Vector3 wallPlacementPos;
     private LayerMask playerLayerMask;
@@ -32,7 +34,7 @@ public class EcoPrinterController : MonoBehaviour
     private Camera mainCam;
     private AudioSource themePlayer;
     private AudioSource SFXPlayer;
-    
+
     [System.Serializable] class  Effects
     {
         public GameObject normalDamageEffect;
@@ -63,6 +65,7 @@ public class EcoPrinterController : MonoBehaviour
             isBossFightStarted = true;
             bossFightUI.SetActive(true);
             _animator.SetBool("isBossFightStarted",true);
+            themePlayer.Pause();
             themePlayer.clip = musicClip;
             themePlayer.Play();
         }
@@ -150,6 +153,7 @@ public class EcoPrinterController : MonoBehaviour
             }
         }
         UpdateSlideBar();
+        SFXPlayer.PlayOneShot(damageTakingClip);
     }
 
     void UpdateSlideBar()
@@ -177,5 +181,8 @@ public class EcoPrinterController : MonoBehaviour
     {
         Instantiate(effects.dieEffect, transform.position, quaternion.identity);
         bossFightUI.SetActive(false);
+        wonMenu.SetActive(true);
+        isBossFightStarted = false;
+        transform.position = new Vector3(10000, 100000, 10000);
     }
 }

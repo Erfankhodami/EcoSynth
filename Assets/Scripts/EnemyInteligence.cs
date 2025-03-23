@@ -25,6 +25,7 @@ public class EnemyInteligence : MonoBehaviour
     public Animator _animator;
     private void Start()
     {
+        enemySource = GameObject.Find("SoundPlayer").GetComponent<AudioSource>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         playerLayerMask = LayerMask.GetMask("Player");
         defaultLayerMask = LayerMask.GetMask("Default");

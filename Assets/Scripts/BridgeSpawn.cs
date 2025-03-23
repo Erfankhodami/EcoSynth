@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
+//using TMPro;
 
 public enum bridgeType
 {
@@ -20,6 +20,7 @@ public class BridgeSpawn : MonoBehaviour
     public bool canInstantiate = true;
     public GameObject printCanvas;
     [SerializeField] private Camera mainCamera;
+    [SerializeField] private AudioClip bridgeSpawnSFX;
     private cameraFollow camFollow;
     private bool isPlacing = false;
     private Vector3 mouseWorldPos;
@@ -28,8 +29,7 @@ public class BridgeSpawn : MonoBehaviour
     public int minForSmall;
     public int minForMedium;
     public int minForLarge;
-    public PlayerController _prc;
-    
+
     public float normalZoom = 5f;
     public float printZoom = 8f; // Default zoom-out value
     public float minZoom = 5f; // Minimum zoom level
@@ -44,12 +44,12 @@ public class BridgeSpawn : MonoBehaviour
     private Vector3 playerStartPos;
     private Vector3 originalPreviewScale; // Store the original preview size
     private Vector3 lastMousePosition; // Store last mouse position for dragging
-
+    private PlayerController _playerController;
     void Start()
     {
         mainCamera = Camera.main;
         camFollow = mainCamera.GetComponent<cameraFollow>();
-        
+        _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
     }
 
     public void PrepareSmallBridge()
@@ -211,7 +211,7 @@ public class BridgeSpawn : MonoBehaviour
         camFollow.canFollow = true;
         _playermain.showPlayerCanvas();
         _playermain.ecoIndicator.text = "x" + newNumberOfEcoInk;
-
+        _playerController.audioSource.PlayOneShot(bridgeSpawnSFX);
     }
 
     void SetPreviewMode(GameObject obj, bool isPreview)

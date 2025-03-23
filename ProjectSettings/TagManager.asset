@@ -21,6 +21,7 @@ TagManager:
   - Boss
   - BossWeakSpot
   - BossNormalSpot
+  - SoundPlayer
   layers:
   - Default
   - TransparentFX

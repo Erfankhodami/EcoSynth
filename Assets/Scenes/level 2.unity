@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 98381743}
   m_Layer: 0
   m_Name: SoundPlayer
-  m_TagString: Untagged
+  m_TagString: SoundPlayer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24029,7 +24029,7 @@ CompositeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_GeometryType: 0
   m_GenerationType: 0
-  m_EdgeRadius: 0.29
+  m_EdgeRadius: 0.3
   m_ColliderPaths:
   - m_Collider: {fileID: 264415710}
     m_ColliderPaths:
@@ -24377,7 +24377,7 @@ CompositeCollider2D:
       - {x: 155, y: -6}
       - {x: 155, y: -7}
       - {x: 163, y: -7}
-  m_VertexDistance: 0.0005
+  m_VertexDistance: 0.1
   m_OffsetDistance: 0
 --- !u!50 &264415712
 Rigidbody2D:
@@ -25752,14 +25752,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree enemy (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 201007432201693462, guid: 75ee4a0dfc653df468744f3bfbf7eeb4, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 201007432201693468, guid: 75ee4a0dfc653df468744f3bfbf7eeb4, type: 3}
-      propertyPath: heart
-      value: 
-      objectReference: {fileID: 1508201117204832225, guid: 0dafde0b960152145bcf46f9320f4b16, type: 3}
     - target: {fileID: 201007432201693468, guid: 75ee4a0dfc653df468744f3bfbf7eeb4, type: 3}
       propertyPath: enemySource
       value: 
@@ -25808,8 +25800,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1135288749, guid: 75ee4a0dfc653df468744f3bfbf7eeb4, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75ee4a0dfc653df468744f3bfbf7eeb4, type: 3}
 --- !u!1001 &770505800
 PrefabInstance:
@@ -26302,12 +26293,12 @@ MonoBehaviour:
   canInstantiate: 1
   printCanvas: {fileID: 3293592835579617869}
   mainCamera: {fileID: 519420031}
+  bridgeSpawnSFX: {fileID: 8300000, guid: e97cb9c035f8e2945bc41cc0b9c87ef2, type: 3}
   _playermain: {fileID: 1475543166}
   errorText: {fileID: 0}
   minForSmall: 2
   minForMedium: 4
   minForLarge: 10
-  _prc: {fileID: 0}
   normalZoom: 5
   printZoom: 10
   minZoom: 5
@@ -30539,6 +30530,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 275128532, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1303743986}
+    - target: {fileID: 275128532, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 296365667, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -43.850006
+      objectReference: {fileID: 0}
+    - target: {fileID: 300905258, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -43.850006
+      objectReference: {fileID: 0}
+    - target: {fileID: 848004277, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1303743986}
+    - target: {fileID: 848004277, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540226152, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1303743986}
+    - target: {fileID: 1540226152, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: RestartLevel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765528281, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1765528281, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 537292012033027637, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

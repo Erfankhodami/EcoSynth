@@ -171,6 +171,9 @@ MonoBehaviour:
   healEatEffect: {fileID: 194787719948541501, guid: e46d83929e792ae43918088c4bba17d2, type: 3}
   infectionEffect: {fileID: 7399880673847465526}
   swardCollectEffect: {fileID: 2527212227027253999, guid: 5d05b9fdb0d716942a7b8d5efef78fb8, type: 3}
+  inkCollectSFX: {fileID: 8300000, guid: 018492587ce9e9e498393af420659a2d, type: 3}
+  deadMenu: {fileID: 0}
+  Boss: {fileID: 0}
   maxHealth: 100
   health: 100
   healthBar: {fileID: 0}
@@ -211,6 +214,7 @@ MonoBehaviour:
   playerCanvas: {fileID: 0}
   printCanvasActive: 0
   mainCanvas: {fileID: 0}
+  _mainManager: {fileID: 0}
 --- !u!114 &3766263540936320798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageRadious: 2.5
   coolDown: 1
+  swepeSFX: {fileID: 8300000, guid: f12b1f9b65368d944b3dfcce5f7f91b9, type: 3}
 --- !u!70 &1475543168
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

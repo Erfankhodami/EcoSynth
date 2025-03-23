@@ -12,7 +12,7 @@ public class BridgeController : MonoBehaviour
     private Vector2 offset;
     public Camera mainCamera;
     public int health = 100;
-    [SerializeField]private int decayRate = 10;
+    //[SerializeField]private int decayRate = 10;
     public float destroyDelay = 1f;
     private bool isPlaced = false; // Ensure decay starts only after placement
 
