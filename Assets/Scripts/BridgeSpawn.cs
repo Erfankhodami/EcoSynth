@@ -47,6 +47,8 @@ public class BridgeSpawn : MonoBehaviour
     private PlayerController _playerController;
     void Start()
     {
+        normalZoom = mainCamera.orthographicSize;
+        printZoom = mainCamera.orthographicSize + 5;
         mainCamera = Camera.main;
         camFollow = mainCamera.GetComponent<cameraFollow>();
         _playerController = GameObject.FindWithTag("Player").GetComponent<PlayerController>();

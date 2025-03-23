@@ -57357,17 +57357,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 4.832676, y: 56.908417}
   m_EdgeRadius: 0
---- !u!114 &468493685 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 468493685, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
-  m_PrefabInstance: {fileID: 3697536140025514543}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -58371,11 +58360,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e13dae9380e2c7a4ea15469bb7f5387f, type: 3}
---- !u!1 &1045553519 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1045553519, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
-  m_PrefabInstance: {fileID: 3697536140025514543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1072456662 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3558354319364982923, guid: 261cc40591fe7ef45be73fe56f2e1520, type: 3}
@@ -60020,11 +60004,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &2042220749 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2042220749, guid: 54ed61af8267d114b9da851c3cbffbe8, type: 3}
-  m_PrefabInstance: {fileID: 3697536140025514543}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2107034135
 GameObject:
   m_ObjectHideFlags: 0
@@ -60672,75 +60651,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &4835017430493201567
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4835017430207848407, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: wonMenu
-      value: 
-      objectReference: {fileID: 1045553519}
-    - target: {fileID: 4835017430207848407, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: bossFightUI
-      value: 
-      objectReference: {fileID: 2042220749}
-    - target: {fileID: 4835017430207848407, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 468493685}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848408, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4835017430207848410, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
-      propertyPath: m_Name
-      value: Eco Printer
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1204f8ac48d25734fac924b6ed7ee41b, type: 3}
 --- !u!1 &5421302816242830011
 GameObject:
   m_ObjectHideFlags: 0

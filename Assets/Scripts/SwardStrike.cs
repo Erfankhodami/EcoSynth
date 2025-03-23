@@ -29,7 +29,7 @@ public class SwardStrike : MonoBehaviour
             if (hit != null)
             {
                 Debug.Log(hit.gameObject.tag);
-                _playerController.EnemyDamage(hit,20);
+                _playerController.EnemyDamage(hit,15);
                 if (hit.gameObject.CompareTag("BossWeakSpot"))
                 {
                     _playerController.Boss.DamageBoss(17);

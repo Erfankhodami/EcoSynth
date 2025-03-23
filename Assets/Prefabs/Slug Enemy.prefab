@@ -102,7 +102,6 @@ MonoBehaviour:
   movingSpeed: 2
   overlapCircleRadious: 10
   inkDrop: {fileID: 3257241061376418699, guid: 0c031c94d8e03eb46bb17d700a60494b, type: 3}
-  heart: {fileID: 0}
   attackRadious: 2
   playerLayerMask:
     serializedVersion: 2
@@ -113,7 +112,7 @@ MonoBehaviour:
   tilemapLayerMask:
     serializedVersion: 2
     m_Bits: 0
-  health: 10
+  health: 20
   isDead: 0
   dieEffect: {fileID: 1562906094599282119, guid: b6fd9bd402c21a5488e6694efa4380a7, type: 3}
   dieSFX: {fileID: 8300000, guid: 6930f258cf01d914bbfecc8778f12c2d, type: 3}
